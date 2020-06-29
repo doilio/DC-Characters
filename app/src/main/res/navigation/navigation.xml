@@ -6,7 +6,7 @@
     app:startDestination="@id/villainsFragment">
     <fragment
         android:id="@+id/villainsFragment"
-        android:name="com.doiliomatsinhe.dcvilains.ui.VillainsFragment"
+        android:name="com.doiliomatsinhe.dcvilains.ui.villain.VillainsFragment"
         android:label="VillainsFragment"
         tools:layout="@layout/fragment_villains" />
 </navigation>

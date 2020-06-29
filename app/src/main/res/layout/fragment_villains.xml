@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.doiliomatsinhe.dcvilains.ui.VillainsViewModel" />
+            type="com.doiliomatsinhe.dcvilains.ui.villain.VillainsViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.VillainsFragment">
+        tools:context=".ui.villain.VillainsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/villain_list"

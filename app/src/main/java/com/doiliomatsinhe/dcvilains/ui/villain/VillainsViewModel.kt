@@ -1,4 +1,4 @@
-package com.doiliomatsinhe.dcvilains.ui
+package com.doiliomatsinhe.dcvilains.ui.villain
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,7 +27,6 @@ class VillainsViewModel : ViewModel() {
 
     private fun getListOfVillains() {
         uiScope.launch {
-
             try {
                 _villainsList.value = VillainsApi.apiService.getVillains().body()
             } catch (ex: Exception) {

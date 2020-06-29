@@ -1,4 +1,4 @@
-package com.doiliomatsinhe.dcvilains.ui
+package com.doiliomatsinhe.dcvilains.ui.villain
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -41,17 +41,17 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun fetchData() {
-        binding.refreshLayout.isRefreshing
+        binding.refreshLayout.isRefreshing = true
         viewModel.villainsList.observe(viewLifecycleOwner, Observer {
             it?.let { villainList ->
                 villainAdapter.submitList(villainList)
-
                 binding.refreshLayout.isRefreshing = false
             }
         })
     }
 
     private fun initComponents() {
+
         // ViewModel
         viewModel = ViewModelProvider(this).get(VillainsViewModel::class.java)
         binding.viewModel = viewModel
