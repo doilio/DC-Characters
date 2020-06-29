@@ -1,6 +1,10 @@
 package com.doiliomatsinhe.dcvilains.model
 
-data class CharacterResponse(
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Villain(
     val id: Int,
     val name: String,
     val slug: String,
@@ -10,4 +14,4 @@ data class CharacterResponse(
     val work: Work,
     val connections: Connections,
     val images: Images
-)
+) : Parcelable
