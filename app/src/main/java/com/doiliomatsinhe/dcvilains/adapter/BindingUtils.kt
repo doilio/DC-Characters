@@ -1,6 +1,7 @@
 package com.doiliomatsinhe.dcvilains.adapter
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -16,20 +17,22 @@ import com.doiliomatsinhe.dcvilains.model.Villain
 fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
 
     this.load(item.images.md) {
-        transformations(object : Transformation {
+
+      transformations(object : Transformation {
             override fun key() = "dowyTransformation"
 
-            override suspend fun transform(
-                pool: BitmapPool,
-                input: Bitmap,
-                size: Size
-            ): Bitmap {
+            override suspend fun transform(pool: BitmapPool, input: Bitmap, size: Size): Bitmap {
                 val p = Palette.from(input).generate()
-                cardView.setCardBackgroundColor(p.getDarkMutedColor(-0xcccccd))
+                if (p.darkMutedSwatch != null){
+                    cardView.setCardBackgroundColor(p.getDarkMutedColor(0))
+                }else{
+                    cardView.setCardBackgroundColor(Color.DKGRAY)
+                }
 
                 return input
             }
-        })
+        }).crossfade(true)
+
     }
 }
 
