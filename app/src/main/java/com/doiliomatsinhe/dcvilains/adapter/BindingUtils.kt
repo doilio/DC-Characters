@@ -15,7 +15,7 @@ import com.doiliomatsinhe.dcvilains.model.Villain
 @BindingAdapter(value = ["villainImage", "cardView"], requireAll = false)
 fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
 
-    this.load(item.images.md) {
+    this.load(item.images.sm) {
         transformations(object : Transformation {
             override fun key() = "dowyTransformation"
 
