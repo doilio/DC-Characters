@@ -42,7 +42,7 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun fetchData() {
         binding.refreshLayout.isRefreshing = true
-        viewModel.villainsList.observe(viewLifecycleOwner, Observer {
+        viewModel.villainList.observe(viewLifecycleOwner, Observer {
             it?.let { villainList ->
                 villainAdapter.submitList(villainList)
                 binding.refreshLayout.isRefreshing = false

@@ -18,10 +18,10 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
 
     @GET("all")
-    suspend fun getVillains(): Response<List<Villain>>
+    suspend fun getVillains(): List<Villain>
 
     @GET("id/{id}")
-    fun getVillain(@Path("id") id: Int): Call<Villain?>
+    suspend fun getVillain(@Path("id") id: Int): Villain?
 
 }
 
