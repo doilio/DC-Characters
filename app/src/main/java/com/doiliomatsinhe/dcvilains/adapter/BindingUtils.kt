@@ -21,7 +21,7 @@ fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
 
     Glide.with(context)
         .asBitmap()
-        .load(item.images.md)
+        .load(item.images.sm)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .listener(object : RequestListener<Bitmap?> {
             override fun onLoadFailed(
@@ -51,35 +51,6 @@ fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
             }
         })
         .into(this)
-
-/*
-    Picasso.get().load(item.images.sm).into(
-        Utils.picassoImageTarget(this.context, "imageDir", "${item.name}.jpg")!!)
-
-    // Loading From Internal Storage
-    val cw = ContextWrapper(this.context)
-    val directory = cw.getDir("imageDir", Context.MODE_PRIVATE)
-    val imageFile =
-        File(directory, "${item.name}.jpg")
-    Picasso.get().load(imageFile).into(this)
-
-
-    this.load(item.images.sm) {
-        transformations(object : Transformation {
-            override fun key() = "dowyTransformation"
-
-            override suspend fun transform(
-                pool: BitmapPool,
-                input: Bitmap,
-                size: Size
-            ): Bitmap {
-                val p = Palette.from(input).generate()
-                cardView.setCardBackgroundColor(p.getDarkMutedColor(-0xcccccd))
-
-                return input
-            }
-        })
-    }*/
 }
 
 @BindingAdapter("groupAffiliation")

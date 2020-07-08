@@ -10,6 +10,7 @@ import com.doiliomatsinhe.dcvilains.network.ApiService
 import com.doiliomatsinhe.dcvilains.network.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 class VillainRepository(
     private val service: ApiService,
@@ -21,8 +22,12 @@ class VillainRepository(
 
     suspend fun refreshVillains() {
         withContext(Dispatchers.IO) {
-            val listOfVillains = service.getVillains()
-            database.insertAllVillains(*listOfVillains.asDatabaseModel())
+            try {
+                val listOfVillains = service.getVillains()
+                database.insertAllVillains(*listOfVillains.asDatabaseModel())
+            } catch (e: Exception) {
+                Timber.d("Error: ${e.message}")
+            }
         }
     }
 
