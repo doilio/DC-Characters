@@ -11,9 +11,10 @@ import com.doiliomatsinhe.dcvilains.network.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class VillainRepository(private val service: ApiService, private val database: VillainsDao) {
-
-    //suspend fun getVillains() = service.getVillains()
+class VillainRepository(
+    private val service: ApiService,
+    private val database: VillainsDao
+) {
 
     val villains: LiveData<List<Villain>> =
         Transformations.map(database.getVillainsList()) { it?.asDomainModel() }
