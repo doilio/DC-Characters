@@ -2,8 +2,6 @@ package com.doiliomatsinhe.dcvilains.network
 
 import com.doiliomatsinhe.dcvilains.model.Villain
 import com.doiliomatsinhe.dcvilains.utils.BASE_URL
-import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -18,10 +16,10 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
 
     @GET("all")
-    suspend fun getVillains(): Response<List<Villain>>
+    suspend fun getVillains(): List<NetworkVillain>
 
     @GET("id/{id}")
-    fun getVillain(@Path("id") id: Int): Call<Villain?>
+    suspend fun getVillain(@Path("id") id: Int): Villain?
 
 }
 

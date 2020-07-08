@@ -1,36 +1,56 @@
 package com.doiliomatsinhe.dcvilains.adapter
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.palette.graphics.Palette
-import coil.api.load
-import coil.bitmappool.BitmapPool
-import coil.size.Size
-import coil.transform.Transformation
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.doiliomatsinhe.dcvilains.model.Villain
+
 
 @BindingAdapter(value = ["villainImage", "cardView"], requireAll = false)
 fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
 
-    this.load(item.images.md) {
-        transformations(object : Transformation {
-            override fun key() = "dowyTransformation"
+    Glide.with(context)
+        .asBitmap()
+        .load(item.images.sm)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
+        .listener(object : RequestListener<Bitmap?> {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Bitmap?>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                return false
+            }
 
-            override suspend fun transform(
-                pool: BitmapPool,
-                input: Bitmap,
-                size: Size
-            ): Bitmap {
-                val p = Palette.from(input).generate()
-                cardView.setCardBackgroundColor(p.getDarkMutedColor(-0xcccccd))
+            override fun onResourceReady(
+                resource: Bitmap?,
+                model: Any?,
+                target: Target<Bitmap?>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
 
-                return input
+
+                if (resource != null) {
+                    val p = Palette.from(resource).generate()
+                    // Use generated instance
+                    cardView.setCardBackgroundColor(p.getDarkMutedColor(Color.DKGRAY))
+                }
+                return false
             }
         })
-    }
+        .into(this)
 }
 
 @BindingAdapter("groupAffiliation")
