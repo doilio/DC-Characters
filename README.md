@@ -15,9 +15,10 @@ The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villa
   * [Databinding](https://developer.android.com/jetpack/androidx/releases/databinding)
   * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
   * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation)
-  * [Palette](https://developer.android.com/jetpack/androidx/releases/palette) 
+  * [Palette](https://developer.android.com/jetpack/androidx/releases/palette)
+  * [Room](https://developer.android.com/topic/libraries/architecture/room)
   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-* [Coil](https://github.com/coil-kt/coil) - An image loading library for Android backed by Kotlin Coroutines.
+* [Glide](https://github.com/bumptech/glide) - A fast and efficient open source media management and image loading framework for Android.
 * [GSON](https://github.com/google/gson) - Java library that can be used to convert Java Objects into their JSON representation.
 * [Kotlin Coroutines](https://developer.android.com/kotlin/coroutines) - Concurrency design pattern used on Android to simplify code that executes asynchronously.
 * [Retrofit 2](https://github.com/square/retrofit) - A type-safe HTTP client for Android and Java.
