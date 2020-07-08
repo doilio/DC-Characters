@@ -1,6 +1,7 @@
 package com.doiliomatsinhe.dcvilains.network
 
 
+import com.doiliomatsinhe.dcvilains.database.DatabaseVillain
 import com.doiliomatsinhe.dcvilains.model.*
 
 
@@ -35,3 +36,22 @@ fun List<NetworkVillain>.asDomainModel(): List<Villain> {
     }
 }
 
+/**
+ * Converts Network results to Database Objects
+ */
+fun List<NetworkVillain>.asDatabaseModel(): Array<DatabaseVillain> {
+    return map {
+        DatabaseVillain(
+            id = it.id,
+            name = it.name,
+            slug = it.slug,
+            powerstats = it.powerstats,
+            appearance = it.appearance,
+            biography = it.biography,
+            work = it.work,
+            connections = it.connections,
+            images = it.images
+        )
+    }.toTypedArray()
+
+}

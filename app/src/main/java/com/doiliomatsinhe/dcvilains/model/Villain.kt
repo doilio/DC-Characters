@@ -60,7 +60,7 @@ data class Biography(
 @Parcelize
 data class Appearance(
     val gender: String,
-    val race: String,
+    //val race: String,
     val height: List<String>,
     val weight: List<String>,
     val eyeColor: String,

@@ -13,7 +13,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.doiliomatsinhe.dcvilains.R
 import com.doiliomatsinhe.dcvilains.adapter.VillainAdapter
 import com.doiliomatsinhe.dcvilains.adapter.VillainClickListener
+import com.doiliomatsinhe.dcvilains.database.VillainsDatabase
 import com.doiliomatsinhe.dcvilains.databinding.FragmentVillainsBinding
+import com.doiliomatsinhe.dcvilains.network.VillainsApi
+import com.doiliomatsinhe.dcvilains.repository.VillainRepository
 
 class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
@@ -42,9 +45,9 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun fetchData() {
         binding.refreshLayout.isRefreshing = true
-        viewModel.villainList.observe(viewLifecycleOwner, Observer {
-            it?.let { villainList ->
-                villainAdapter.submitList(villainList)
+        viewModel.villains.observe(viewLifecycleOwner, Observer {
+            it?.let { listOfVillains ->
+                villainAdapter.submitList(listOfVillains)
                 binding.refreshLayout.isRefreshing = false
             }
         })
@@ -52,8 +55,14 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun initComponents() {
 
+        // Dependencies
+        val villainsService = VillainsApi.apiService
+        val database = VillainsDatabase.getDatabase(requireActivity().application).villainsDao
+        val repository = VillainRepository(villainsService, database)
+
         // ViewModel
-        viewModel = ViewModelProvider(this).get(VillainsViewModel::class.java)
+        val factory = VillainsViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, factory).get(VillainsViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
