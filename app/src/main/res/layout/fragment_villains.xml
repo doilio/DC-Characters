@@ -9,6 +9,10 @@
             name="viewModel"
             type="com.doiliomatsinhe.dcvilains.ui.villain.VillainsViewModel" />
 
+        <variable
+            name="adapter"
+            type="com.doiliomatsinhe.dcvilains.adapter.VillainAdapter" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,6 +37,7 @@
                 android:clipToPadding="false"
                 android:padding="4dp"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:recyclerViewAdapter="@{adapter}"
                 app:spanCount="2"
                 tools:listitem="@layout/villains_item" />
 
