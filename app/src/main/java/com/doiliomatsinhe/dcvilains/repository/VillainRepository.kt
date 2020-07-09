@@ -11,8 +11,9 @@ import com.doiliomatsinhe.dcvilains.network.asDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import javax.inject.Inject
 
-class VillainRepository(
+class VillainRepository @Inject constructor(
     private val service: ApiService,
     private val database: VillainsDao
 ) {

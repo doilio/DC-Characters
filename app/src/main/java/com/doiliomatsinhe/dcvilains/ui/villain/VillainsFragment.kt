@@ -6,23 +6,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.doiliomatsinhe.dcvilains.R
 import com.doiliomatsinhe.dcvilains.adapter.VillainAdapter
 import com.doiliomatsinhe.dcvilains.adapter.VillainClickListener
+import com.doiliomatsinhe.dcvilains.database.VillainsDao
 import com.doiliomatsinhe.dcvilains.database.VillainsDatabase
 import com.doiliomatsinhe.dcvilains.databinding.FragmentVillainsBinding
-import com.doiliomatsinhe.dcvilains.network.VillainsApi
+import com.doiliomatsinhe.dcvilains.network.ApiService
 import com.doiliomatsinhe.dcvilains.repository.VillainRepository
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var binding: FragmentVillainsBinding
-    private lateinit var viewModel: VillainsViewModel
+    private val viewModel: VillainsViewModel by viewModels()
     private lateinit var villainAdapter: VillainAdapter
+    @Inject
+    lateinit var database: VillainsDatabase
+    @Inject
+    lateinit var villainsDao: VillainsDao
+    @Inject
+    lateinit var villainsService: ApiService
+    @Inject
+    lateinit var repository: VillainRepository
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,14 +68,6 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun initComponents() {
 
-        // Dependencies
-        val villainsService = VillainsApi.apiService
-        val database = VillainsDatabase.getDatabase(requireActivity().application).villainsDao
-        val repository = VillainRepository(villainsService, database)
-
-        // ViewModel
-        val factory = VillainsViewModelFactory(repository)
-        viewModel = ViewModelProvider(this, factory).get(VillainsViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 

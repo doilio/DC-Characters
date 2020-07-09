@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">DC Villains</string>
     <string name="villain_image">Villain Image</string>
+    <string name="retry">Retry</string>
+    <string name="couldn_t_load_list">Couldn\'t load list!</string>
 </resources>
