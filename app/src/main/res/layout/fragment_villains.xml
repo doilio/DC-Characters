@@ -37,7 +37,6 @@
                 android:clipToPadding="false"
                 android:padding="4dp"
                 app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-                app:recyclerViewAdapter="@{adapter}"
                 app:spanCount="2"
                 tools:listitem="@layout/villains_item" />
 

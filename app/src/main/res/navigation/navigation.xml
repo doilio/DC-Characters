@@ -7,6 +7,24 @@
     <fragment
         android:id="@+id/villainsFragment"
         android:name="com.doiliomatsinhe.dcvilains.ui.villain.VillainsFragment"
-        android:label="VillainsFragment"
-        tools:layout="@layout/fragment_villains" />
+        android:label="DC Villains"
+        tools:layout="@layout/fragment_villains">
+        <action
+            android:id="@+id/action_villainsFragment_to_villainDetailFragment"
+            app:destination="@id/villainDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/villainDetailFragment"
+        android:name="com.doiliomatsinhe.dcvilains.ui.villaindetail.VillainDetailFragment"
+        tools:layout="@layout/fragment_villain_detail">
+        <argument
+            android:name="villainId"
+            app:argType="integer" />
+        <argument
+            android:name="villainName"
+            app:argType="string" />
+        <argument
+            android:name="cardColor"
+            app:argType="integer" />
+    </fragment>
 </navigation>

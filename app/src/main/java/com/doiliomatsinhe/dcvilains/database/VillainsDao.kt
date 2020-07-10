@@ -15,4 +15,7 @@ interface VillainsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllVillains(vararg villains: DatabaseVillain)
 
+    @Query("SELECT * FROM databasevillain WHERE id= :id")
+    fun getVillainById(id: Int): LiveData<DatabaseVillain>
+
 }

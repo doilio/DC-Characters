@@ -1,6 +1,9 @@
 package com.doiliomatsinhe.dcvilains.database
 
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations.map
+import androidx.lifecycle.map
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -10,8 +13,8 @@ import com.doiliomatsinhe.dcvilains.model.*
 data class DatabaseVillain(
     @PrimaryKey
     val id: Int,
-    val name: String ,
-    val slug: String ,
+    val name: String,
+    val slug: String,
     @Embedded val powerstats: Powerstats,
     @Embedded val appearance: Appearance,
     @Embedded val biography: Biography,
@@ -40,3 +43,22 @@ fun List<DatabaseVillain>.asDomainModel(): List<Villain> {
     }
 }
 
+/**
+ * Converts Database results to Domain Objects
+ */
+fun LiveData<DatabaseVillain>.asDomainModel(): LiveData<Villain> {
+
+    return map {
+        Villain(
+            id = it.id,
+            name = it.name,
+            slug = it.slug,
+            powerstats = it.powerstats,
+            appearance = it.appearance,
+            biography = it.biography,
+            work = it.work,
+            connections = it.connections,
+            images = it.images
+        )
+    }
+}

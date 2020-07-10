@@ -1,9 +1,5 @@
 package com.doiliomatsinhe.dcvilains.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
 data class Villain(
     val id: Int,
     val name: String,
@@ -14,15 +10,16 @@ data class Villain(
     val work: Work,
     val connections: Connections,
     val images: Images
-) : Parcelable
+) {
 
-@Parcelize
+    var dominantcolor: Int = -12038056
+}
+
 data class Work(
     val occupation: String,
     val base: String
-) : Parcelable
+)
 
-@Parcelize
 data class Powerstats(
     val intelligence: Int,
     val strength: Int,
@@ -30,23 +27,20 @@ data class Powerstats(
     val durability: Int,
     val power: Int,
     val combat: Int
-) : Parcelable
+)
 
-@Parcelize
 data class Images(
     val xs: String,
     val sm: String,
     val md: String,
     val lg: String
-) : Parcelable
+)
 
-@Parcelize
 data class Connections(
     val groupAffiliation: String,
     val relatives: String
-) : Parcelable
+)
 
-@Parcelize
 data class Biography(
     val fullName: String,
     val alterEgos: String,
@@ -55,9 +49,8 @@ data class Biography(
     val firstAppearance: String,
     val publisher: String,
     val alignment: String
-) : Parcelable
+)
 
-@Parcelize
 data class Appearance(
     val gender: String,
     //val race: String,
@@ -65,4 +58,4 @@ data class Appearance(
     val weight: List<String>,
     val eyeColor: String,
     val hairColor: String
-) : Parcelable
+)
