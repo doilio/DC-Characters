@@ -7,11 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.doiliomatsinhe.dcvilains.databinding.FragmentVillainsBinding
+import com.bumptech.glide.Glide
+import com.doiliomatsinhe.dcvilains.databinding.FragmentVillainDetailBinding
+import com.doiliomatsinhe.dcvilains.model.Villain
 import com.doiliomatsinhe.dcvilains.repository.VillainRepository
 import com.doiliomatsinhe.dcvilains.utils.ColorUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +21,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class VillainDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentVillainsBinding
+    private lateinit var binding: FragmentVillainDetailBinding
     private lateinit var viewModel: VillainDetailViewModel
     private lateinit var arguments: VillainDetailFragmentArgs
 
@@ -32,7 +33,7 @@ class VillainDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentVillainsBinding.inflate(inflater, container, false)
+        binding = FragmentVillainDetailBinding.inflate(inflater, container, false)
 
         arguments = VillainDetailFragmentArgs.fromBundle(requireArguments())
 
@@ -49,24 +50,55 @@ class VillainDetailFragment : Fragment() {
 
         viewModel.getVillain().observe(viewLifecycleOwner, Observer {
             it?.let {
-
-                Toast.makeText(activity, it.name, Toast.LENGTH_SHORT).show()
+                populateUI(it)
             }
         })
 
     }
 
+    private fun populateUI(villain: Villain) {
+        Glide.with(this).load(villain.images.sm).into(binding.profileVillain)
+
+        // Populate Appearance
+        val appearance = villain.appearance
+        val villainRace = when (appearance.race) {
+            null -> " with unknown race"
+            else->" ${appearance.race}"
+        }
+        val villainHair = when (appearance.hairColor) {
+            "-" -> "."
+            "No Hair" -> " and ${appearance.hairColor}."
+            else->" and ${appearance.hairColor} hair."
+        }
+        val villainEyeColor = when (appearance.eyeColor) {
+            "-" -> ""
+            else->", has ${appearance.eyeColor} eyes"
+        }
+
+        val appearanceText = "${villain.name} is a ${appearance.gender}$villainRace, who is ${appearance.height[1]} tall, weights ${appearance.weight[1]}$villainEyeColor$villainHair"
+        binding.textAppearance.text = appearanceText
+
+        // TODO Populate Biography
+        // TODO Populate Affiliations
+        // TODO Populate Relatives
+    }
+
 
     private fun setupActionBar(arguments: VillainDetailFragmentArgs) {
         ((activity as AppCompatActivity).supportActionBar)?.title = arguments.villainName
-        ((activity as AppCompatActivity).supportActionBar)?.setBackgroundDrawable(ColorDrawable(arguments.cardColor))
+        ((activity as AppCompatActivity).supportActionBar)?.setBackgroundDrawable(
+            ColorDrawable(
+                arguments.cardColor
+            )
+        )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ((activity as AppCompatActivity).window)?.statusBarColor = ColorUtils.manipulateColor(
-                arguments.cardColor, 0.50f)
+                arguments.cardColor, 0.50f
+            )
         }
     }
-    private fun initComponents() {
 
+    private fun initComponents() {
         val factory = VillainDetailViewModelFactory(repository, arguments.villainId)
         viewModel = ViewModelProvider(this, factory).get(VillainDetailViewModel::class.java)
     }
