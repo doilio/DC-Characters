@@ -22,7 +22,7 @@
                 android:layout_height="250dp"
                 android:contentDescription="TODO"
                 android:scaleType="centerCrop"
-                android:src="@drawable/detail_background"
+                android:src="@drawable/dc_landscape"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -31,13 +31,28 @@
             <ImageView
                 android:id="@+id/profile_villain"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="180dp"
                 android:layout_marginStart="16dp"
                 android:contentDescription="TODO"
                 app:layout_constraintBottom_toBottomOf="@+id/cover_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cover_image"
                 app:srcCompat="@drawable/darkseid" />
+
+            <TextView
+                android:id="@+id/title_power_stats"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Power Stats"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toEndOf="@+id/profile_villain"
+                app:layout_constraintTop_toBottomOf="@+id/cover_image" />
 
             <TextView
                 android:id="@+id/title_appearance"
@@ -56,12 +71,12 @@
                 android:id="@+id/text_appearance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="This is where the appearance text will be when I fetch it from the API"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/title_appearance" />
+                app:layout_constraintTop_toBottomOf="@+id/title_appearance"
+                tools:text="This is where the appearance text will be when I fetch it from the API" />
 
 
             <TextView
@@ -82,14 +97,13 @@
                 android:id="@+id/text_biography"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:text="This is where the bio text will be when I fetch it from the API"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/title_biography" />
+                app:layout_constraintTop_toBottomOf="@+id/title_biography"
+                tools:text="This is where the bio text will be when I fetch it from the API" />
 
             <TextView
                 android:id="@+id/title_affiliations"
@@ -109,14 +123,13 @@
                 android:id="@+id/text_affiliations"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:text="This is where the affiliations will be when I fetch it from the API"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/title_affiliations" />
+                app:layout_constraintTop_toBottomOf="@+id/title_affiliations"
+                tools:text="This is where the affiliations will be when I fetch it from the API" />
 
             <TextView
                 android:id="@+id/title_relatives"
@@ -136,14 +149,13 @@
                 android:id="@+id/text_relatives"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:text="* Mother's name\n* Father's name\n* Brother's name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/title_relatives" />
+                app:layout_constraintTop_toBottomOf="@+id/title_relatives"
+                tools:text="* Mother's name\n* Father's name\n* Brother's name" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
