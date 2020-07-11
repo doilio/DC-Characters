@@ -4,8 +4,8 @@ The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villa
 
 
 
-![device-2020-06-29-044215](https://user-images.githubusercontent.com/38020305/85968473-889e6800-b9c5-11ea-97ef-cee12a6894ee.png)
 ![device-2020-06-29-044321](https://user-images.githubusercontent.com/38020305/85968476-8b00c200-b9c5-11ea-9cbb-7b557b2ebe9f.png)
+![device-2020-07-11-resized](https://user-images.githubusercontent.com/38020305/87223200-38d37f80-c37b-11ea-9183-be3cbaaae1f4.png)
 ![device-2020-06-29-044522](https://user-images.githubusercontent.com/38020305/85968479-8cca8580-b9c5-11ea-8756-6713a86fffef.png)
 
 
