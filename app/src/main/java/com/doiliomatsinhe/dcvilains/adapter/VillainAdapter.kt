@@ -6,9 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.doiliomatsinhe.dcvilains.model.Villain
-import javax.inject.Inject
 
-class VillainAdapter @Inject constructor(private val clickListener: VillainClickListener) :
+class VillainAdapter (private val clickListener: VillainClickListener) :
     ListAdapter<Villain, RecyclerView.ViewHolder>(VillainDiffUtilCallback()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -31,6 +30,6 @@ class VillainDiffUtilCallback : DiffUtil.ItemCallback<Villain>() {
     }
 }
 
-class VillainClickListener @Inject constructor(val clickListener: (villain: Villain) -> Unit) {
+class VillainClickListener (val clickListener: (villain: Villain) -> Unit) {
     fun onClick(villain: Villain) = clickListener(villain)
 }

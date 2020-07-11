@@ -32,4 +32,12 @@ class VillainRepository @Inject constructor(
         }
     }
 
+    suspend fun getVillainById(id: Int): LiveData<Villain> {
+        return withContext(Dispatchers.IO) {
+            val villain = database.getVillainById(id)
+
+            villain.asDomainModel()
+        }
+    }
 }
+

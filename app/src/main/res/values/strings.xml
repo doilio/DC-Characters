@@ -3,4 +3,6 @@
     <string name="villain_image">Villain Image</string>
     <string name="retry">Retry</string>
     <string name="couldn_t_load_list">Couldn\'t load list!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

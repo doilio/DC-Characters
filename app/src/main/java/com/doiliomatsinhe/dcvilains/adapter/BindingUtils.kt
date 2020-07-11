@@ -7,15 +7,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.palette.graphics.Palette
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.doiliomatsinhe.dcvilains.R
 import com.doiliomatsinhe.dcvilains.model.Villain
 
 
@@ -33,6 +30,7 @@ fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
                 target: Target<Bitmap?>?,
                 isFirstResource: Boolean
             ): Boolean {
+                cardView.setCardBackgroundColor(item.dominantcolor)
                 return false
             }
 
@@ -48,6 +46,7 @@ fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
                 if (resource != null) {
                     val p = Palette.from(resource).generate()
                     // Use generated instance
+                    item.dominantcolor = p.getDarkMutedColor(Color.DKGRAY)
                     cardView.setCardBackgroundColor(p.getDarkMutedColor(Color.DKGRAY))
                 }
                 return false
@@ -70,15 +69,4 @@ fun TextView.setGroupAffiliation(item: Villain) {
 @BindingAdapter("villainName")
 fun TextView.setVillainName(item: Villain) {
     text = item.name
-}
-
-@BindingAdapter("recyclerViewAdapter")
-fun RecyclerView.setRecyclerViewAdapter(item: VillainAdapter) {
-
-    adapter = item
-    hasFixedSize()
-    layoutManager = StaggeredGridLayoutManager(
-        resources.getInteger(R.integer.span_count),
-        StaggeredGridLayoutManager.VERTICAL
-    )
 }
