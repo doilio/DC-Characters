@@ -4,9 +4,11 @@ The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villa
 
 
 
-![device-2020-06-29-044321](https://user-images.githubusercontent.com/38020305/85968476-8b00c200-b9c5-11ea-9cbb-7b557b2ebe9f.png)
-![device-2020-07-11-resized](https://user-images.githubusercontent.com/38020305/87223200-38d37f80-c37b-11ea-9183-be3cbaaae1f4.png)
-![device-2020-06-29-044522](https://user-images.githubusercontent.com/38020305/85968479-8cca8580-b9c5-11ea-8756-6713a86fffef.png)
+![device-2020-07-13-223431-2](https://user-images.githubusercontent.com/38020305/87352029-ac7fb300-c55a-11ea-9b51-3eafd6c74ba7.png)
+![device-2020-07-13-223458-2](https://user-images.githubusercontent.com/38020305/87352048-b4d7ee00-c55a-11ea-951a-6c8d9605fe6d.png)
+![device-2020-07-13-223541-2](https://user-images.githubusercontent.com/38020305/87352051-b6091b00-c55a-11ea-8d5b-244b7d0cec65.png)
+![device-2020-07-13-223601-2](https://user-images.githubusercontent.com/38020305/87352056-b73a4800-c55a-11ea-960f-3e682a96c12d.png)
+![device-2020-07-13-223820-2](https://user-images.githubusercontent.com/38020305/87352057-b7d2de80-c55a-11ea-9780-48de67c65625.png)
 
 
 ## Built With
