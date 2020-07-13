@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -89,10 +90,29 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
         villainsViewModel.getList(filters)
         villainsViewModel.villains.observe(viewLifecycleOwner, Observer {
             it?.let { listOfVillains ->
-                villainAdapter.submitList(listOfVillains)
+                if (listOfVillains.isNotEmpty()) {
+                    villainAdapter.submitList(listOfVillains)
+                    showRecyclerView()
+
+                } else {
+                    hideRecyclerView()
+                }
+
                 binding.refreshLayout.isRefreshing = false
             }
         })
+    }
+
+    private fun showRecyclerView() {
+        binding.villainList.visibility = View.VISIBLE
+        binding.textException.visibility = View.GONE
+        binding.buttonRetry.visibility = View.GONE
+    }
+
+    private fun hideRecyclerView() {
+        binding.villainList.visibility = View.GONE
+        binding.textException.visibility = View.VISIBLE
+        binding.buttonRetry.visibility = View.VISIBLE
     }
 
     private fun initComponents() {
@@ -113,6 +133,12 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
             resources.getInteger(R.integer.span_count),
             StaggeredGridLayoutManager.VERTICAL
         )
+
+        // Reseting filters
+        binding.buttonRetry.setOnClickListener {
+            val filters = Filters()
+            onFilter(filters)
+        }
 
         binding.refreshLayout.setOnRefreshListener(this)
     }
