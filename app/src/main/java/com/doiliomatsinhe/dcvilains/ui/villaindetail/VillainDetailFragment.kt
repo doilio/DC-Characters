@@ -137,11 +137,11 @@ class VillainDetailFragment : Fragment() {
                         result += "* $affiliation\n"
                     }
                 }
-                "Affiliated with: \n$result".trim()
+                "Affiliated with: \n$result"
             }
         }
 
-        binding.textAffiliations.text = affiliationsText
+        binding.textAffiliations.text = affiliationsText.trim()
 
         // Populate Relatives
 
@@ -163,7 +163,7 @@ class VillainDetailFragment : Fragment() {
             }
         }
 
-        binding.textRelatives.text = relativesText
+        binding.textRelatives.text = relativesText.trim()
 
     }
 
@@ -187,6 +187,10 @@ class VillainDetailFragment : Fragment() {
             titleBiography.setTextColor(arguments.cardColor)
             titlePowerStats.setTextColor(arguments.cardColor)
             titleRelatives.setTextColor(arguments.cardColor)
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                cardVillain.outlineSpotShadowColor = arguments.cardColor
+            }
         }
 
     }

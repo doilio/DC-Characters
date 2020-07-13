@@ -21,6 +21,25 @@ class VillainRepository @Inject constructor(
     val villains: LiveData<List<Villain>> =
         Transformations.map(database.getVillainsList()) { it?.asDomainModel() }
 
+    val villainsIntelligence: LiveData<List<Villain>> =
+        Transformations.map(database.getVillainListByIntelligence()) { it?.asDomainModel() }
+
+    val villainsStrength: LiveData<List<Villain>> =
+        Transformations.map(database.getVillainListByStrength()) { it?.asDomainModel() }
+
+    val villainsSpeed: LiveData<List<Villain>> =
+        Transformations.map(database.getVillainListBySpeed()) { it?.asDomainModel() }
+
+    val villainsPower: LiveData<List<Villain>> =
+        Transformations.map(database.getVillainListByPower()) { it?.asDomainModel() }
+
+    val villainsDurability: LiveData<List<Villain>> =
+        Transformations.map(database.getVillainListByDurability()) { it?.asDomainModel() }
+
+    val villainsCombat: LiveData<List<Villain>> =
+        Transformations.map(database.getVillainListByCombatSkill()) { it?.asDomainModel() }
+
+
     suspend fun refreshVillains() {
         withContext(Dispatchers.IO) {
             try {
