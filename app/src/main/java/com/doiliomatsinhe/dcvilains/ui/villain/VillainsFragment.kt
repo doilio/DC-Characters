@@ -4,7 +4,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -19,6 +18,7 @@ import com.doiliomatsinhe.dcvilains.adapter.VillainClickListener
 import com.doiliomatsinhe.dcvilains.databinding.FragmentVillainsBinding
 import com.doiliomatsinhe.dcvilains.model.Filters
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
@@ -139,7 +139,7 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
     override fun onFilter(filters: Filters) {
         fetchData(filters)
 
-        Toast.makeText(activity, filters.order, Toast.LENGTH_SHORT).show()
+        Timber.d("Current filter order:${filters.order}")
 
         villainsViewModel.filters = filters
 
