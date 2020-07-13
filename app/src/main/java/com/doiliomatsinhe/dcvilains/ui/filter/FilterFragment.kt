@@ -1,4 +1,4 @@
-package com.doiliomatsinhe.dcvilains.ui.villain
+package com.doiliomatsinhe.dcvilains.ui.filter
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -20,6 +20,8 @@ class FilterFragment(private val recoveredFilters: Filters) : AppCompatDialogFra
     private lateinit var applyButton: Button
     private lateinit var filterListener: FilterDialogListener
     private lateinit var sortAdapter: ArrayAdapter<String>
+    private lateinit var raceAdapter: ArrayAdapter<String>
+    private lateinit var genderAdapter: ArrayAdapter<String>
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity(), R.style.AlertDialogTheme)
@@ -28,14 +30,29 @@ class FilterFragment(private val recoveredFilters: Filters) : AppCompatDialogFra
 
         // Init components
         initComponents(view)
+
         configureSpinners()
 
-        // Recover Filters
-        val sortSpinnerPosition = sortAdapter.getPosition(recoveredFilters.order)
-        spinnerSortBy.setSelection(sortSpinnerPosition)
+        recoverSpinnerPositions()
 
         builder.setView(view)
         return builder.create()
+    }
+
+    private fun recoverSpinnerPositions() {
+        val sortSpinnerPosition = sortAdapter.getPosition(recoveredFilters.order)
+        spinnerSortBy.setSelection(sortSpinnerPosition)
+        spinnerSortBy.isEnabled = false //TODO Enable after finding a clean way to Implement sorting
+
+        val genderSpinnerPosition = if (recoveredFilters.gender == "-") {
+            genderAdapter.getPosition("Unknown")
+        } else {
+            genderAdapter.getPosition(recoveredFilters.gender)
+        }
+        spinnerFilterGender.setSelection(genderSpinnerPosition)
+
+        val raceSpinnerPosition = raceAdapter.getPosition(recoveredFilters.race)
+        spinnerFilterRace.setSelection(raceSpinnerPosition)
     }
 
     private fun configureSpinners() {
@@ -52,7 +69,7 @@ class FilterFragment(private val recoveredFilters: Filters) : AppCompatDialogFra
 
         // Race Spinner
         val raceList = resources.getStringArray(R.array.filter_by_race)
-        val raceAdapter = ArrayAdapter<String>(
+        raceAdapter = ArrayAdapter(
             requireActivity(),
             android.R.layout.simple_spinner_item,
             raceList
@@ -62,7 +79,7 @@ class FilterFragment(private val recoveredFilters: Filters) : AppCompatDialogFra
 
         // Gender Spinner
         val genderList = resources.getStringArray(R.array.filter_by_gender)
-        val genderAdapter = ArrayAdapter<String>(
+        genderAdapter = ArrayAdapter(
             requireActivity(),
             android.R.layout.simple_spinner_item, genderList
         )
@@ -106,13 +123,37 @@ class FilterFragment(private val recoveredFilters: Filters) : AppCompatDialogFra
 
     private fun getSortOrder(): String {
         val selected = spinnerSortBy.selectedItem as String
-        Timber.d("Selected 1 $selected")
+        Timber.d("Selected order $selected")
         return selected
+    }
+
+    private fun getGender(): String {
+        val gender = when (val selected = spinnerFilterGender.selectedItem as String) {
+            "Any Gender" -> ""
+            "Unknown" -> "-"
+            else -> selected
+        }
+
+        Timber.d("Selected gender $gender")
+        return gender
+    }
+
+    private fun getRace(): String {
+        val selected = spinnerFilterRace.selectedItem as String
+        val race = if (selected == "Any Race") {
+            ""
+        } else {
+            selected
+        }
+        Timber.d("Selected race $race")
+        return race
     }
 
     private fun getFilters(): Filters {
         val filters = Filters()
         filters.order = getSortOrder()
+        filters.gender = getGender()
+        filters.race = getRace()
 
         return filters
     }

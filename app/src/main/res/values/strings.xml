@@ -36,7 +36,7 @@
         <item>Kryptonian</item>
         <item>Metahuman</item>
         <item>New God</item>
-        <item>null</item>
+<!--        <item>null</item>-->
         <item>Parademon</item>
         <item>Zombie</item>
     </string-array>
@@ -45,6 +45,6 @@
         <item>@string/any_gender</item>
         <item>Male</item>
         <item>Female</item>
-        <item>-</item> <!--Unknown-->
+        <item>Unknown</item> <!--Unknown-->
     </string-array>
 </resources>

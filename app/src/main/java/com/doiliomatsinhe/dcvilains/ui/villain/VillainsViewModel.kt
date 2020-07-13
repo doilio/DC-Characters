@@ -2,6 +2,7 @@ package com.doiliomatsinhe.dcvilains.ui.villain
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.doiliomatsinhe.dcvilains.model.Filters
@@ -24,16 +25,25 @@ class VillainsViewModel @ViewModelInject constructor
 
     var filters: Filters = Filters()
 
-     fun getList(filters: Filters): LiveData<List<Villain>> {
-        return when (filters.order) {
-            "Sort by Combat Skill" -> repository.villainsCombat
-            "Sort by Durability" -> repository.villainsDurability
-            "Sort by Intelligence" -> repository.villainsIntelligence
-            "Sort by Power" -> repository.villainsPower
-            "Sort by Speed" -> repository.villainsSpeed
-            "Sort by Strength" -> repository.villainsStrength
-            else -> repository.villains
-        }
+    val villains = MediatorLiveData<List<Villain>>()
+
+
+    fun getList(filters: Filters) {
+
+        villains.addSource(repository.getVillains(filters), villains::setValue)
+
+            //TODO Find a clean way to Implement sorting on this properties
+        /* villains.addSource(
+            when (filters.order) {
+                "Sort by Combat Skill" -> repository.villainsCombat
+                "Sort by Durability" -> repository.villainsDurability
+                "Sort by Intelligence" -> repository.villainsIntelligence
+                "Sort by Power" -> repository.villainsPower
+                "Sort by Speed" -> repository.villainsSpeed
+                "Sort by Strength" -> repository.villainsStrength
+                else -> repository.villains
+            }, villains::setValue
+        )*/
     }
 
     init {

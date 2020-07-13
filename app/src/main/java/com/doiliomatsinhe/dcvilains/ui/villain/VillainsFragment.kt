@@ -4,9 +4,9 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -17,8 +17,8 @@ import com.doiliomatsinhe.dcvilains.adapter.VillainAdapter
 import com.doiliomatsinhe.dcvilains.adapter.VillainClickListener
 import com.doiliomatsinhe.dcvilains.databinding.FragmentVillainsBinding
 import com.doiliomatsinhe.dcvilains.model.Filters
+import com.doiliomatsinhe.dcvilains.ui.filter.FilterFragment
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
@@ -46,7 +46,7 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
 
         initComponents()
         onFilter(villainsViewModel.filters)
-        fetchData(villainsViewModel.filters)
+        //fetchData(villainsViewModel.filters)
 
         villainsViewModel.navigateToVillainDetail.observe(viewLifecycleOwner, Observer {
             it?.let {
@@ -72,7 +72,9 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
     }
 
     private fun openFilterDialog() {
-        val dialog = FilterFragment(villainsViewModel.filters)
+        val dialog = FilterFragment(
+            villainsViewModel.filters
+        )
         dialog.setTargetFragment(this, 1)
         dialog.show(parentFragmentManager, "Filter Dialog")
     }
@@ -84,7 +86,8 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
 
     private fun fetchData(filters: Filters) {
         binding.refreshLayout.isRefreshing = true
-        villainsViewModel.getList(filters).observe(viewLifecycleOwner, Observer {
+        villainsViewModel.getList(filters)
+        villainsViewModel.villains.observe(viewLifecycleOwner, Observer {
             it?.let { listOfVillains ->
                 villainAdapter.submitList(listOfVillains)
                 binding.refreshLayout.isRefreshing = false
@@ -138,8 +141,6 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
 
     override fun onFilter(filters: Filters) {
         fetchData(filters)
-
-        Timber.d("Current filter order:${filters.order}")
 
         villainsViewModel.filters = filters
 
