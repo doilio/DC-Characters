@@ -3,6 +3,48 @@
     <string name="villain_image">Villain Image</string>
     <string name="retry">Retry</string>
     <string name="couldn_t_load_list">Couldn\'t load list!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sort_by_name">Sort by Name</string>
+    <string name="any_race">Any Race</string>
+    <string name="any_gender">Any Gender</string>
+
+    <!--String Arrays-->
+
+    <string-array name="sort_by">
+        <item>@string/sort_by_name</item>
+        <item>Sort by Combat Skill</item>
+        <item>Sort by Durability</item>
+        <item>Sort by Intelligence</item>
+        <item>Sort by Power</item>
+        <item>Sort by Speed</item>
+        <item>Sort by Strength</item>
+    </string-array>
+
+    <string-array name="filter_by_race">
+        <item>@string/any_race</item>
+        <item>Alien</item>
+        <item>Android</item>
+        <item>Animal</item>
+        <item>Atlantean</item>
+        <item>Bizarro</item>
+        <item>Cyborg</item>
+        <item>Czarnian</item>
+        <item>Demon</item>
+        <item>God / Eternal</item>
+        <item>Gorilla</item>
+        <item>Human</item>
+        <item>Korugaran</item>
+        <item>Kryptonian</item>
+        <item>Metahuman</item>
+        <item>New God</item>
+<!--        <item>null</item>-->
+        <item>Parademon</item>
+        <item>Zombie</item>
+    </string-array>
+
+    <string-array name="filter_by_gender">
+        <item>@string/any_gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unknown</item> <!--Unknown-->
+    </string-array>
 </resources>
