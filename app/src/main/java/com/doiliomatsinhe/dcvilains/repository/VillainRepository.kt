@@ -2,8 +2,9 @@ package com.doiliomatsinhe.dcvilains.repository
 
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import androidx.paging.PagingSource
 import androidx.sqlite.db.SimpleSQLiteQuery
+import com.doiliomatsinhe.dcvilains.database.DatabaseVillain
 import com.doiliomatsinhe.dcvilains.database.VillainsDao
 import com.doiliomatsinhe.dcvilains.database.asDomainModel
 import com.doiliomatsinhe.dcvilains.model.Filters
@@ -20,29 +21,7 @@ class VillainRepository @Inject constructor(
     private val database: VillainsDao
 ) {
 
-    val villains: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainsList()) { it?.asDomainModel() }
-
-    suspend fun refreshVillains() {
-        withContext(Dispatchers.IO) {
-            try {
-                val listOfVillains = service.getVillains()
-                database.insertAllVillains(*listOfVillains.asDatabaseModel())
-            } catch (e: Exception) {
-                Timber.d("Error: ${e.message}")
-            }
-        }
-    }
-
-    suspend fun getVillainById(id: Int): LiveData<Villain> {
-        return withContext(Dispatchers.IO) {
-            val villain = database.getVillainById(id)
-
-            villain.asDomainModel()
-        }
-    }
-
-    fun getVillains(filters: Filters): LiveData<List<Villain>> {
+    fun getVillains(filters: Filters): PagingSource<Int, DatabaseVillain> {
 
         val builtQuery = if (filters.gender.isNotEmpty() && filters.race.isNotEmpty()) {
             SimpleSQLiteQuery(
@@ -62,9 +41,28 @@ class VillainRepository @Inject constructor(
         } else {
             SimpleSQLiteQuery("SELECT * FROM databasevillain WHERE publisher ='DC Comics'")
         }
-        val listVillains = database.getRawListOfVillains(builtQuery)
 
-        return Transformations.map(listVillains) { it.asDomainModel() }
+        return database.getRawListOfVillains(builtQuery)
+
+    }
+
+    suspend fun refreshVillains() {
+        withContext(Dispatchers.IO) {
+            try {
+                val listOfVillains = service.getVillains()
+                database.insertAllVillains(*listOfVillains.asDatabaseModel())
+            } catch (e: Exception) {
+                Timber.d("Error: ${e.message}")
+            }
+        }
+    }
+
+    suspend fun getVillainById(id: Int): LiveData<Villain> {
+        return withContext(Dispatchers.IO) {
+            val villain = database.getVillainById(id)
+
+            villain.asDomainModel()
+        }
     }
 }
 

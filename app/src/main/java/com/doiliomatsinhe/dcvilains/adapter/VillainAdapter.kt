@@ -2,16 +2,16 @@ package com.doiliomatsinhe.dcvilains.adapter
 
 
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.doiliomatsinhe.dcvilains.model.Villain
 
 class VillainAdapter (private val clickListener: VillainClickListener) :
-    ListAdapter<Villain, RecyclerView.ViewHolder>(VillainDiffUtilCallback()) {
+    PagingDataAdapter<Villain, RecyclerView.ViewHolder>(VillainDiffUtilCallback()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as VillainViewHolder).bind(getItem(position), clickListener)
+        getItem(position)?.let { (holder as VillainViewHolder).bind(it, clickListener) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

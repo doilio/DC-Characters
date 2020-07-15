@@ -1,17 +1,18 @@
 package com.doiliomatsinhe.dcvilains.database
 
 import androidx.lifecycle.LiveData
+import androidx.paging.PagingSource
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
 
 @Dao
 interface VillainsDao {
 
-    @Query("SELECT * FROM databasevillain WHERE publisher ='DC Comics'")
-    fun getVillainsList(): LiveData<List<DatabaseVillain>>
+/*    @Query("SELECT * FROM databasevillain")
+    fun getVillainsList(): PagingSource<Int, DatabaseVillain>*/
 
     @RawQuery(observedEntities = [DatabaseVillain::class])
-    fun getRawListOfVillains(query: SupportSQLiteQuery): LiveData<List<DatabaseVillain>>
+    fun getRawListOfVillains(query: SupportSQLiteQuery): PagingSource<Int, DatabaseVillain>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllVillains(vararg villains: DatabaseVillain)
