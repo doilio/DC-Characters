@@ -47,7 +47,7 @@ data class Biography(
     val aliases: List<String>,
     val placeOfBirth: String,
     val firstAppearance: String,
-    val publisher: String,
+    val publisher: String?,
     val alignment: String
 )
 

@@ -27,7 +27,8 @@ object DatabaseModule {
             appContext,
             VillainsDatabase::class.java,
             "villains"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
     }
 
 }

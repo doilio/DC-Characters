@@ -26,24 +26,11 @@ class VillainsViewModel @ViewModelInject constructor
     var filters: Filters = Filters()
 
     val villains = MediatorLiveData<List<Villain>>()
+    //val villains = repository.villains
 
 
     fun getList(filters: Filters) {
-
         villains.addSource(repository.getVillains(filters), villains::setValue)
-
-            //TODO Find a clean way to Implement sorting on this properties
-        /* villains.addSource(
-            when (filters.order) {
-                "Sort by Combat Skill" -> repository.villainsCombat
-                "Sort by Durability" -> repository.villainsDurability
-                "Sort by Intelligence" -> repository.villainsIntelligence
-                "Sort by Power" -> repository.villainsPower
-                "Sort by Speed" -> repository.villainsSpeed
-                "Sort by Strength" -> repository.villainsStrength
-                else -> repository.villains
-            }, villains::setValue
-        )*/
     }
 
     init {

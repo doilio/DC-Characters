@@ -20,27 +20,8 @@ class VillainRepository @Inject constructor(
     private val database: VillainsDao
 ) {
 
-    //TODO Find a clean way to Implement sorting on these properties
-    /*val villains: LiveData<List<Villain>> =
+    val villains: LiveData<List<Villain>> =
         Transformations.map(database.getVillainsList()) { it?.asDomainModel() }
-
-    val villainsIntelligence: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByIntelligence()) { it?.asDomainModel() }
-
-    val villainsStrength: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByStrength()) { it?.asDomainModel() }
-
-    val villainsSpeed: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListBySpeed()) { it?.asDomainModel() }
-
-    val villainsPower: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByPower()) { it?.asDomainModel() }
-
-    val villainsDurability: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByDurability()) { it?.asDomainModel() }
-
-    val villainsCombat: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByCombatSkill()) { it?.asDomainModel() }*/
 
     suspend fun refreshVillains() {
         withContext(Dispatchers.IO) {
@@ -65,18 +46,21 @@ class VillainRepository @Inject constructor(
 
         val builtQuery = if (filters.gender.isNotEmpty() && filters.race.isNotEmpty()) {
             SimpleSQLiteQuery(
-                "SELECT * FROM databasevillain WHERE gender = ? AND race = ?",
+                "SELECT * FROM databasevillain WHERE publisher ='DC Comics' AND gender = ? AND race = ?",
                 arrayOf(filters.gender, filters.race)
             )
         } else if (filters.gender.isEmpty() && filters.race.isNotEmpty()) {
-            SimpleSQLiteQuery("SELECT * FROM databasevillain WHERE race = ?", arrayOf(filters.race))
+            SimpleSQLiteQuery(
+                "SELECT * FROM databasevillain WHERE publisher ='DC Comics' AND race = ?",
+                arrayOf(filters.race)
+            )
         } else if (filters.race.isEmpty() && filters.gender.isNotEmpty()) {
             SimpleSQLiteQuery(
-                "SELECT * FROM databasevillain WHERE gender = ?",
+                "SELECT * FROM databasevillain WHERE publisher ='DC Comics' AND gender = ?",
                 arrayOf(filters.gender)
             )
         } else {
-            SimpleSQLiteQuery("SELECT * FROM databasevillain")
+            SimpleSQLiteQuery("SELECT * FROM databasevillain WHERE publisher ='DC Comics'")
         }
         val listVillains = database.getRawListOfVillains(builtQuery)
 

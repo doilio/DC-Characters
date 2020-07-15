@@ -144,7 +144,6 @@ class VillainsFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener,
     }
 
     private fun setupActionBar() {
-        //TODO: Look for a better way to handle this
         ((activity as AppCompatActivity).supportActionBar)?.setBackgroundDrawable(
             ColorDrawable(
                 ContextCompat.getColor(

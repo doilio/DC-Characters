@@ -23,21 +23,30 @@
         <item>@string/any_race</item>
         <item>Alien</item>
         <item>Android</item>
+        <item>Amazon</item>
         <item>Animal</item>
         <item>Atlantean</item>
         <item>Bizarro</item>
+        <item>Bolovaxian</item>
         <item>Cyborg</item>
         <item>Czarnian</item>
+        <item>Demi-God</item>
         <item>Demon</item>
         <item>God / Eternal</item>
         <item>Gorilla</item>
         <item>Human</item>
+        <item>Human / Cosmic</item>
+        <item>Human / Radiation</item>
+        <item>Human-Vuldarian</item>
         <item>Korugaran</item>
         <item>Kryptonian</item>
         <item>Metahuman</item>
+        <item>Martian</item>
         <item>New God</item>
-<!--        <item>null</item>-->
         <item>Parademon</item>
+        <item>Talokite</item>
+        <item>Tamaranean</item>
+        <item>Ungaran</item>
         <item>Zombie</item>
     </string-array>
 
