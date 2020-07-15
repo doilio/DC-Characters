@@ -18,6 +18,7 @@ The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villa
   * [Databinding](https://developer.android.com/jetpack/androidx/releases/databinding)
   * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
   * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation)
+  * [Paging](https://developer.android.com/jetpack/androidx/releases/paging)
   * [Palette](https://developer.android.com/jetpack/androidx/releases/palette)
   * [Room](https://developer.android.com/topic/libraries/architecture/room)
   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
