@@ -2,11 +2,16 @@ package com.doiliomatsinhe.dcvilains.adapter
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import androidx.paging.LoadState
 import androidx.palette.graphics.Palette
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -21,7 +26,7 @@ fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
 
     Glide.with(context)
         .asBitmap()
-        .load(item.images.sm)
+        .load(item.images.md)
         .diskCacheStrategy(DiskCacheStrategy.ALL)
         .listener(object : RequestListener<Bitmap?> {
             override fun onLoadFailed(
@@ -69,4 +74,43 @@ fun TextView.setGroupAffiliation(item: Villain) {
 @BindingAdapter("villainName")
 fun TextView.setVillainName(item: Villain) {
     text = item.name
+}
+
+@BindingAdapter("visibility")
+fun ProgressBar.setVisibility(item: LoadState) {
+
+    when (item) {
+        is LoadState.Loading -> {
+            this.visibility = View.VISIBLE
+        }
+        is LoadState.Error -> {
+            this.visibility = View.GONE
+        }
+        else -> this.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("visibility")
+fun ConstraintLayout.setVisibility(item: LoadState) {
+
+    when (item) {
+        is LoadState.Error -> {
+            this.visibility = View.VISIBLE
+        }
+        else -> this.visibility = View.GONE
+    }
+}
+
+@BindingAdapter("visibility")
+fun RecyclerView.setVisibility(item: LoadState) {
+
+    when (item) {
+        is LoadState.NotLoading -> {
+            this.visibility = View.VISIBLE
+        }
+        is LoadState.Error -> {
+            this.visibility = View.GONE
+        }
+        else -> this.visibility = View.GONE
+    }
 }

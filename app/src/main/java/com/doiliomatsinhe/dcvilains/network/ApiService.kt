@@ -6,7 +6,8 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("all")
+    //@GET("all")
+    @GET("all.json")
     suspend fun getVillains(): List<NetworkVillain>
 
     @GET("id/{id}")

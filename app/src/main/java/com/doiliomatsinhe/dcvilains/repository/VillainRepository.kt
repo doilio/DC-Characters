@@ -2,8 +2,9 @@ package com.doiliomatsinhe.dcvilains.repository
 
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+import androidx.paging.PagingSource
 import androidx.sqlite.db.SimpleSQLiteQuery
+import com.doiliomatsinhe.dcvilains.database.DatabaseVillain
 import com.doiliomatsinhe.dcvilains.database.VillainsDao
 import com.doiliomatsinhe.dcvilains.database.asDomainModel
 import com.doiliomatsinhe.dcvilains.model.Filters
@@ -20,27 +21,30 @@ class VillainRepository @Inject constructor(
     private val database: VillainsDao
 ) {
 
-    //TODO Find a clean way to Implement sorting on these properties
-    /*val villains: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainsList()) { it?.asDomainModel() }
+    fun getVillains(filters: Filters): PagingSource<Int, DatabaseVillain> {
 
-    val villainsIntelligence: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByIntelligence()) { it?.asDomainModel() }
+        val builtQuery = if (filters.gender.isNotEmpty() && filters.race.isNotEmpty()) {
+            SimpleSQLiteQuery(
+                "SELECT * FROM databasevillain WHERE publisher ='DC Comics' AND gender = ? AND race = ?",
+                arrayOf(filters.gender, filters.race)
+            )
+        } else if (filters.gender.isEmpty() && filters.race.isNotEmpty()) {
+            SimpleSQLiteQuery(
+                "SELECT * FROM databasevillain WHERE publisher ='DC Comics' AND race = ?",
+                arrayOf(filters.race)
+            )
+        } else if (filters.race.isEmpty() && filters.gender.isNotEmpty()) {
+            SimpleSQLiteQuery(
+                "SELECT * FROM databasevillain WHERE publisher ='DC Comics' AND gender = ?",
+                arrayOf(filters.gender)
+            )
+        } else {
+            SimpleSQLiteQuery("SELECT * FROM databasevillain WHERE publisher ='DC Comics'")
+        }
 
-    val villainsStrength: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByStrength()) { it?.asDomainModel() }
+        return database.getRawListOfVillains(builtQuery)
 
-    val villainsSpeed: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListBySpeed()) { it?.asDomainModel() }
-
-    val villainsPower: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByPower()) { it?.asDomainModel() }
-
-    val villainsDurability: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByDurability()) { it?.asDomainModel() }
-
-    val villainsCombat: LiveData<List<Villain>> =
-        Transformations.map(database.getVillainListByCombatSkill()) { it?.asDomainModel() }*/
+    }
 
     suspend fun refreshVillains() {
         withContext(Dispatchers.IO) {
@@ -59,28 +63,6 @@ class VillainRepository @Inject constructor(
 
             villain.asDomainModel()
         }
-    }
-
-    fun getVillains(filters: Filters): LiveData<List<Villain>> {
-
-        val builtQuery = if (filters.gender.isNotEmpty() && filters.race.isNotEmpty()) {
-            SimpleSQLiteQuery(
-                "SELECT * FROM databasevillain WHERE gender = ? AND race = ?",
-                arrayOf(filters.gender, filters.race)
-            )
-        } else if (filters.gender.isEmpty() && filters.race.isNotEmpty()) {
-            SimpleSQLiteQuery("SELECT * FROM databasevillain WHERE race = ?", arrayOf(filters.race))
-        } else if (filters.race.isEmpty() && filters.gender.isNotEmpty()) {
-            SimpleSQLiteQuery(
-                "SELECT * FROM databasevillain WHERE gender = ?",
-                arrayOf(filters.gender)
-            )
-        } else {
-            SimpleSQLiteQuery("SELECT * FROM databasevillain")
-        }
-        val listVillains = database.getRawListOfVillains(builtQuery)
-
-        return Transformations.map(listVillains) { it.asDomainModel() }
     }
 }
 

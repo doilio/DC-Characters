@@ -4,6 +4,7 @@ package com.doiliomatsinhe.dcvilains.database
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations.map
 import androidx.lifecycle.map
+import androidx.paging.PagingData
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -47,6 +48,23 @@ fun List<DatabaseVillain>.asDomainModel(): List<Villain> {
  * Converts Database results to Domain Objects
  */
 fun LiveData<DatabaseVillain>.asDomainModel(): LiveData<Villain> {
+
+    return map {
+        Villain(
+            id = it.id,
+            name = it.name,
+            slug = it.slug,
+            powerstats = it.powerstats,
+            appearance = it.appearance,
+            biography = it.biography,
+            work = it.work,
+            connections = it.connections,
+            images = it.images
+        )
+    }
+}
+
+fun PagingData<DatabaseVillain>.asDomainModel(): PagingData<Villain> {
 
     return map {
         Villain(
