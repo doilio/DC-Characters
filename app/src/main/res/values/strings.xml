@@ -1,11 +1,27 @@
 <resources>
-    <string name="app_name">DC Villains</string>
-    <string name="villain_image">Villain Image</string>
-    <string name="retry">Retry</string>
+    <string name="app_name">DC Characters</string>
+    <string name="character_image">Character image</string>
     <string name="couldn_t_load_list">Couldn\'t load list!</string>
     <string name="sort_by_name">Sort by Name</string>
     <string name="any_race">Any Race</string>
     <string name="any_gender">Any Gender</string>
+    <string name="filter">Filter</string>
+    <string name="sorting_image">Sorting image</string>
+    <string name="filter_by_race_image">Filter by race image</string>
+    <string name="filter_by_gender_image">Filter by gender image</string>
+    <string name="apply">Apply</string>
+    <string name="dc_cover_image">DC Cover Image</string>
+    <string name="dc_character_image">DC Character image</string>
+    <string name="power_stats">Power Stats</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="appearance">Appearance</string>
+    <string name="biography">Biography</string>
+    <string name="affiliations">Affiliations</string>
+    <string name="relatives">Relatives</string>
+    <string name="oops_nerror_loading_data">Oops!!!\nError Loading Data</string>
+    <string name="retry">Retry</string>
+    <string name="no_results_found_nclear_filters">No results found \nClear filters?</string>
+    <string name="clear">Clear</string>
 
     <!--String Arrays-->
 
@@ -54,6 +70,6 @@
         <item>@string/any_gender</item>
         <item>Male</item>
         <item>Female</item>
-        <item>Unknown</item> <!--Unknown-->
+        <item>Unknown</item>
     </string-array>
 </resources>
