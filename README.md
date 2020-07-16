@@ -1,14 +1,14 @@
-# DC-Villains 🦹‍♂️
-Application that displays a list of some of DC Villains using Modern Android Application Development tools and API's.
+# DC-Characters 🦸‍♂️
+Application that displays a list of DC Characters using Modern Android Application Development tools and API's.
 The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villains-api/) and parses the JSON response to display the results
 
 
 
-![device-2020-07-13-223431-2](https://user-images.githubusercontent.com/38020305/87352029-ac7fb300-c55a-11ea-9b51-3eafd6c74ba7.png)
-![device-2020-07-13-223458-2](https://user-images.githubusercontent.com/38020305/87352048-b4d7ee00-c55a-11ea-951a-6c8d9605fe6d.png)
-![device-2020-07-13-223541-2](https://user-images.githubusercontent.com/38020305/87352051-b6091b00-c55a-11ea-8d5b-244b7d0cec65.png)
-![device-2020-07-13-223601-2](https://user-images.githubusercontent.com/38020305/87352056-b73a4800-c55a-11ea-960f-3e682a96c12d.png)
-![device-2020-07-13-223820-2](https://user-images.githubusercontent.com/38020305/87352057-b7d2de80-c55a-11ea-9780-48de67c65625.png)
+![1](https://user-images.githubusercontent.com/38020305/87644247-2d51d100-c74c-11ea-837a-c57f3e0eb62e.png)
+![2](https://user-images.githubusercontent.com/38020305/87644265-3478df00-c74c-11ea-851b-0027028553ec.png)
+![3](https://user-images.githubusercontent.com/38020305/87644270-35aa0c00-c74c-11ea-90b9-255552c05a96.png)
+![4](https://user-images.githubusercontent.com/38020305/87644274-36db3900-c74c-11ea-97e6-3fbfd7d30691.png)
+![5](https://user-images.githubusercontent.com/38020305/87644280-380c6600-c74c-11ea-842f-3933e794d2d7.png)
 
 
 ## Built With
