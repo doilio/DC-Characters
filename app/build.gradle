@@ -97,4 +97,9 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_ext_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_ext_version"
 
+    def chartview_version = "0.3.1"
+    // Percentage ChartView
+    implementation "com.ramijemli.percentagechartview:percentagechartview:$chartview_version"
+
+
 }

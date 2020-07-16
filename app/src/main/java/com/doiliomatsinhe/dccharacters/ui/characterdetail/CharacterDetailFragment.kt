@@ -10,9 +10,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.doiliomatsinhe.dccharacters.R
+import com.doiliomatsinhe.dccharacters.adapter.PowerStatAdapter
 import com.doiliomatsinhe.dccharacters.databinding.FragmentCharacterDetailBinding
 import com.doiliomatsinhe.dccharacters.model.Character
+import com.doiliomatsinhe.dccharacters.model.Powerstats
 import com.doiliomatsinhe.dccharacters.repository.CharacterRepository
 import com.doiliomatsinhe.dccharacters.utils.ColorUtils
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +28,7 @@ class CharacterDetailFragment : Fragment() {
     private lateinit var binding: FragmentCharacterDetailBinding
     private lateinit var viewModel: CharacterDetailViewModel
     private lateinit var arguments: CharacterDetailFragmentArgs
+    private lateinit var adapter: PowerStatAdapter
 
     @Inject
     lateinit var repository: CharacterRepository
@@ -57,7 +62,8 @@ class CharacterDetailFragment : Fragment() {
     }
 
     private fun populateUI(character: Character) {
-        Glide.with(this).load(character.images.sm).into(binding.profileCharacter)
+        Glide.with(this).load(character.images.sm).placeholder(R.drawable.placeholder)
+            .error(R.drawable.placeholder).into(binding.profileCharacter)
 
         // Populate Appearance
         val appearance = character.appearance
@@ -165,6 +171,10 @@ class CharacterDetailFragment : Fragment() {
 
         binding.textRelatives.text = relativesText.trim()
 
+        // Populate Power Stats
+        adapter.powerstats = character.powerstats
+        binding.powerstatsView.adapter = adapter
+
     }
 
 
@@ -188,9 +198,6 @@ class CharacterDetailFragment : Fragment() {
             titlePowerStats.setTextColor(arguments.cardColor)
             titleRelatives.setTextColor(arguments.cardColor)
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                cardCharacter.outlineSpotShadowColor = arguments.cardColor
-            }
         }
 
     }
@@ -198,6 +205,9 @@ class CharacterDetailFragment : Fragment() {
     private fun initComponents() {
         val factory = CharacterDetailViewModelFactory(repository, arguments.villainId)
         viewModel = ViewModelProvider(this, factory).get(CharacterDetailViewModel::class.java)
+
+        binding.powerstatsView.hasFixedSize()
+        adapter = PowerStatAdapter()
     }
 
 
