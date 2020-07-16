@@ -9,7 +9,7 @@ import com.doiliomatsinhe.dccharacters.model.Character
 class CharacterViewHolder(private val binding: CharacterItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: Character, clickListener: CharacterClickListener) {
+    fun bind(item: Character?, clickListener: CharacterClickListener) {
         binding.character = item
         binding.clickListener = clickListener
         binding.executePendingBindings()

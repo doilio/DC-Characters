@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.doiliomatsinhe.dccharacters.database.CharacterDao
 import com.doiliomatsinhe.dccharacters.database.CharactersDatabase
+import com.doiliomatsinhe.dccharacters.utils.DB_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +27,7 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             CharactersDatabase::class.java,
-            "charactersDB"
+            DB_NAME
         ).fallbackToDestructiveMigration()
             .build()
     }

@@ -11,7 +11,7 @@ class CharacterAdapter (private val clickListener: CharacterClickListener) :
     PagingDataAdapter<Character, RecyclerView.ViewHolder>(CharacterDiffUtilCallback()) {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        getItem(position)?.let { (holder as CharacterViewHolder).bind(it, clickListener) }
+         (holder as CharacterViewHolder).bind(getItem(position), clickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

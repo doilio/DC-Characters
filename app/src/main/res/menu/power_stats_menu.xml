@@ -7,7 +7,7 @@
         android:enabled="true"
         android:icon="@drawable/ic_baseline_filter_list_24"
         android:orderInCategory="10"
-        android:title="Filter"
+        android:title="@string/filter"
         app:showAsAction="ifRoom" />
 
 </menu>

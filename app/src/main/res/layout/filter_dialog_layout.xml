@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filter"
+        android:text="@string/filter"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/sorting_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/ic_baseline_sort_24" />
@@ -47,7 +47,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/filter_by_race_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_stats"
         app:srcCompat="@drawable/ic_baseline_all_inclusive_24" />
@@ -72,7 +72,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/filter_by_gender_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_race"
         app:srcCompat="@drawable/ic_baseline_people_24" />
@@ -108,7 +108,7 @@
         android:id="@+id/fitler_apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apply"
+        android:text="@string/apply"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBaseline_toBaselineOf="@+id/filter_cancel"
