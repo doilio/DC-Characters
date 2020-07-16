@@ -11,19 +11,14 @@
 
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refresh_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.villain.VillainsFragment">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:context=".ui.character.CharactersFragment">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/villain_list"
+                android:id="@+id/character_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
@@ -38,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:spanCount="2"
                 app:visibility="@{loadState}"
-                tools:listitem="@layout/villains_item" />
+                tools:listitem="@layout/character_item" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/error_loading_data"
@@ -124,61 +119,12 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/villain_list"
+                app:layout_constraintEnd_toEndOf="@+id/character_list"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/villain_list"
+                app:layout_constraintTop_toTopOf="@+id/character_list"
                 app:visibility="@{loadState}" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <!--        <TextView
-        android:id="@+id/text_exception"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
-        android:text="@string/couldn_t_load_list"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/button_retry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:id="@+id/button_retry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"
-        android:text="@string/retry"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_exception" />
-
-    <ProgressBar
-        android:id="@+id/progress_loading"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />-->
-
 
 </layout>

@@ -1,11 +1,11 @@
 package com.doiliomatsinhe.dcvilains.network
 
 
-import com.doiliomatsinhe.dcvilains.database.DatabaseVillain
+import com.doiliomatsinhe.dcvilains.database.DatabaseCharacter
 import com.doiliomatsinhe.dcvilains.model.*
 
 
-data class NetworkVillain(
+data class NetworkCharacter(
     val id: Int,
     val name: String,
     val slug: String,
@@ -20,9 +20,9 @@ data class NetworkVillain(
 /**
  * Converts Network results to Domain Objects
  */
-fun List<NetworkVillain>.asDomainModel(): List<Villain> {
+fun List<NetworkCharacter>.asDomainModel(): List<Character> {
     return map {
-        Villain(
+        Character(
             id = it.id,
             name = it.name,
             slug = it.slug,
@@ -39,9 +39,9 @@ fun List<NetworkVillain>.asDomainModel(): List<Villain> {
 /**
  * Converts Network results to Database Objects
  */
-fun List<NetworkVillain>.asDatabaseModel(): Array<DatabaseVillain> {
+fun List<NetworkCharacter>.asDatabaseModel(): Array<DatabaseCharacter> {
     return map {
-        DatabaseVillain(
+        DatabaseCharacter(
             id = it.id,
             name = it.name,
             slug = it.slug,

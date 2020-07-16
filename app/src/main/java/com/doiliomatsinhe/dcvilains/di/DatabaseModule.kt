@@ -2,8 +2,8 @@ package com.doiliomatsinhe.dcvilains.di
 
 import android.content.Context
 import androidx.room.Room
-import com.doiliomatsinhe.dcvilains.database.VillainsDao
-import com.doiliomatsinhe.dcvilains.database.VillainsDatabase
+import com.doiliomatsinhe.dcvilains.database.CharacterDao
+import com.doiliomatsinhe.dcvilains.database.CharactersDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,17 +16,17 @@ import javax.inject.Singleton
 object DatabaseModule {
 
     @Provides
-    fun provideVillainsDao(database: VillainsDatabase): VillainsDao {
-        return database.villainsDao
+    fun provideCharactersDao(database: CharactersDatabase): CharacterDao {
+        return database.characterDao
     }
 
     @Provides
     @Singleton
-    fun provideVillainsDatabase(@ApplicationContext appContext: Context): VillainsDatabase {
+    fun provideCharactersDatabase(@ApplicationContext appContext: Context): CharactersDatabase {
         return Room.databaseBuilder(
             appContext,
-            VillainsDatabase::class.java,
-            "villains"
+            CharactersDatabase::class.java,
+            "charactersDB"
         ).fallbackToDestructiveMigration()
             .build()
     }

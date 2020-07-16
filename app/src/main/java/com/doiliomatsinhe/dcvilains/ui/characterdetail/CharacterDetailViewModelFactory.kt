@@ -1,20 +1,20 @@
-package com.doiliomatsinhe.dcvilains.ui.villaindetail
+package com.doiliomatsinhe.dcvilains.ui.characterdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.doiliomatsinhe.dcvilains.repository.VillainRepository
+import com.doiliomatsinhe.dcvilains.repository.CharacterRepository
 import java.lang.IllegalArgumentException
 
-class VillainDetailViewModelFactory(
-    private val repository: VillainRepository,
+class CharacterDetailViewModelFactory(
+    private val repository: CharacterRepository,
     private val villainId: Int
 ) :
     ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(VillainDetailViewModel::class.java)) {
-            return VillainDetailViewModel(repository, villainId) as T
+        if (modelClass.isAssignableFrom(CharacterDetailViewModel::class.java)) {
+            return CharacterDetailViewModel(repository, villainId) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")
     }

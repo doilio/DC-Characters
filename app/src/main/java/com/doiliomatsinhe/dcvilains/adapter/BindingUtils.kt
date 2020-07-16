@@ -18,11 +18,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.doiliomatsinhe.dcvilains.model.Villain
+import com.doiliomatsinhe.dcvilains.model.Character
 
 
-@BindingAdapter(value = ["villainImage", "cardView"], requireAll = false)
-fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
+@BindingAdapter(value = ["characterImage", "cardView"], requireAll = false)
+fun ImageView.setCharacterImage(item: Character, cardView: CardView) {
 
     Glide.with(context)
         .asBitmap()
@@ -61,7 +61,7 @@ fun ImageView.setVillainImage(item: Villain, cardView: CardView) {
 }
 
 @BindingAdapter("groupAffiliation")
-fun TextView.setGroupAffiliation(item: Villain) {
+fun TextView.setGroupAffiliation(item: Character) {
 
     text = if (item.connections.groupAffiliation != "-") {
         item.connections.groupAffiliation
@@ -71,8 +71,8 @@ fun TextView.setGroupAffiliation(item: Villain) {
 
 }
 
-@BindingAdapter("villainName")
-fun TextView.setVillainName(item: Villain) {
+@BindingAdapter("characterName")
+fun TextView.setCharacterName(item: Character) {
     text = item.name
 }
 
@@ -82,9 +82,6 @@ fun ProgressBar.setVisibility(item: LoadState) {
     when (item) {
         is LoadState.Loading -> {
             this.visibility = View.VISIBLE
-        }
-        is LoadState.Error -> {
-            this.visibility = View.GONE
         }
         else -> this.visibility = View.GONE
     }
@@ -107,9 +104,6 @@ fun RecyclerView.setVisibility(item: LoadState) {
     when (item) {
         is LoadState.NotLoading -> {
             this.visibility = View.VISIBLE
-        }
-        is LoadState.Error -> {
-            this.visibility = View.GONE
         }
         else -> this.visibility = View.GONE
     }

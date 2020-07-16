@@ -10,13 +10,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.villaindetail.VillainDetailFragment">
+        tools:context=".ui.characterdetail.CharacterDetailFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!--CardView Villain-->
+            <!--CardView Character-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_power_stats"
                 android:layout_width="0dp"
@@ -45,7 +45,7 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_villain"
+                        android:id="@+id/card_character"
                         android:layout_width="0dp"
                         android:layout_height="190dp"
                         android:layout_marginStart="16dp"
@@ -58,7 +58,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/cover_image">
 
                         <ImageView
-                            android:id="@+id/profile_villain"
+                            android:id="@+id/profile_character"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:contentDescription="TODO"
@@ -78,7 +78,7 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/card_villain"
+                        app:layout_constraintStart_toEndOf="@+id/card_character"
                         app:layout_constraintTop_toBottomOf="@+id/cover_image" />
 
                     <TextView

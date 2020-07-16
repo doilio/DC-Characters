@@ -6,17 +6,17 @@
     app:startDestination="@id/villainsFragment">
     <fragment
         android:id="@+id/villainsFragment"
-        android:name="com.doiliomatsinhe.dcvilains.ui.villain.VillainsFragment"
-        android:label="DC Villains"
-        tools:layout="@layout/fragment_villains">
+        android:name="com.doiliomatsinhe.dcvilains.ui.character.CharactersFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_characters">
         <action
             android:id="@+id/action_villainsFragment_to_villainDetailFragment"
             app:destination="@id/villainDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/villainDetailFragment"
-        android:name="com.doiliomatsinhe.dcvilains.ui.villaindetail.VillainDetailFragment"
-        tools:layout="@layout/fragment_villain_detail">
+        android:name="com.doiliomatsinhe.dcvilains.ui.characterdetail.CharacterDetailFragment"
+        tools:layout="@layout/fragment_character_detail">
         <argument
             android:name="villainId"
             app:argType="integer" />

@@ -1,6 +1,6 @@
 package com.doiliomatsinhe.dcvilains.model
 
-data class Villain(
+data class Character(
     val id: Int,
     val name: String,
     val slug: String,

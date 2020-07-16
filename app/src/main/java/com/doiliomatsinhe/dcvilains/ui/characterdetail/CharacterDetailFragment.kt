@@ -1,4 +1,4 @@
-package com.doiliomatsinhe.dcvilains.ui.villaindetail
+package com.doiliomatsinhe.dcvilains.ui.characterdetail
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -11,31 +11,31 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.doiliomatsinhe.dcvilains.databinding.FragmentVillainDetailBinding
-import com.doiliomatsinhe.dcvilains.model.Villain
-import com.doiliomatsinhe.dcvilains.repository.VillainRepository
+import com.doiliomatsinhe.dcvilains.databinding.FragmentCharacterDetailBinding
+import com.doiliomatsinhe.dcvilains.model.Character
+import com.doiliomatsinhe.dcvilains.repository.CharacterRepository
 import com.doiliomatsinhe.dcvilains.utils.ColorUtils
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class VillainDetailFragment : Fragment() {
+class CharacterDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentVillainDetailBinding
-    private lateinit var viewModel: VillainDetailViewModel
-    private lateinit var arguments: VillainDetailFragmentArgs
+    private lateinit var binding: FragmentCharacterDetailBinding
+    private lateinit var viewModel: CharacterDetailViewModel
+    private lateinit var arguments: CharacterDetailFragmentArgs
 
     @Inject
-    lateinit var repository: VillainRepository
+    lateinit var repository: CharacterRepository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentVillainDetailBinding.inflate(inflater, container, false)
+        binding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
 
-        arguments = VillainDetailFragmentArgs.fromBundle(requireArguments())
+        arguments = CharacterDetailFragmentArgs.fromBundle(requireArguments())
 
         setupActionBar(arguments)
 
@@ -56,11 +56,11 @@ class VillainDetailFragment : Fragment() {
 
     }
 
-    private fun populateUI(villain: Villain) {
-        Glide.with(this).load(villain.images.sm).into(binding.profileVillain)
+    private fun populateUI(character: Character) {
+        Glide.with(this).load(character.images.sm).into(binding.profileCharacter)
 
         // Populate Appearance
-        val appearance = villain.appearance
+        val appearance = character.appearance
         val villainRace = when (appearance.race) {
             null -> " with unknown race"
             else -> " ${appearance.race}"
@@ -76,12 +76,12 @@ class VillainDetailFragment : Fragment() {
         }
 
         val appearanceText =
-            "${villain.name} is a ${appearance.gender}$villainRace, who is ${appearance.height[1]} tall, weights ${appearance.weight[1]}$villainEyeColor$villainHair"
+            "${character.name} is a ${appearance.gender}$villainRace, who is ${appearance.height[1]} tall, weights ${appearance.weight[1]}$villainEyeColor$villainHair"
         binding.textAppearance.text = appearanceText
 
         //  Populate Biography
-        val biography = villain.biography
-        val work = villain.work
+        val biography = character.biography
+        val work = character.work
 
         val fullName = when (biography.fullName) {
             "" -> "Fullname is unknown.\n"
@@ -121,7 +121,7 @@ class VillainDetailFragment : Fragment() {
 
         // Populate Affiliations
 
-        val connections = villain.connections
+        val connections = character.connections
 
         val affiliationsText = when (connections.groupAffiliation) {
             "-" -> "No known affiliations."
@@ -168,7 +168,7 @@ class VillainDetailFragment : Fragment() {
     }
 
 
-    private fun setupActionBar(arguments: VillainDetailFragmentArgs) {
+    private fun setupActionBar(arguments: CharacterDetailFragmentArgs) {
         ((activity as AppCompatActivity).supportActionBar)?.title = arguments.villainName
         ((activity as AppCompatActivity).supportActionBar)?.setBackgroundDrawable(
             ColorDrawable(
@@ -189,15 +189,15 @@ class VillainDetailFragment : Fragment() {
             titleRelatives.setTextColor(arguments.cardColor)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                cardVillain.outlineSpotShadowColor = arguments.cardColor
+                cardCharacter.outlineSpotShadowColor = arguments.cardColor
             }
         }
 
     }
 
     private fun initComponents() {
-        val factory = VillainDetailViewModelFactory(repository, arguments.villainId)
-        viewModel = ViewModelProvider(this, factory).get(VillainDetailViewModel::class.java)
+        val factory = CharacterDetailViewModelFactory(repository, arguments.villainId)
+        viewModel = ViewModelProvider(this, factory).get(CharacterDetailViewModel::class.java)
     }
 
 

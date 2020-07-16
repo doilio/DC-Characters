@@ -1,4 +1,4 @@
-package com.doiliomatsinhe.dcvilains.ui.villain
+package com.doiliomatsinhe.dcvilains.ui.character
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -9,8 +9,8 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.doiliomatsinhe.dcvilains.database.asDomainModel
 import com.doiliomatsinhe.dcvilains.model.Filters
-import com.doiliomatsinhe.dcvilains.model.Villain
-import com.doiliomatsinhe.dcvilains.repository.VillainRepository
+import com.doiliomatsinhe.dcvilains.model.Character
+import com.doiliomatsinhe.dcvilains.repository.CharacterRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -18,23 +18,23 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-class VillainsViewModel @ViewModelInject constructor
-    (private val repository: VillainRepository) : ViewModel() {
+class CharactersViewModel @ViewModelInject constructor
+    (private val repository: CharacterRepository) : ViewModel() {
 
     private val viewModelJob = SupervisorJob()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val _navigateToVillainDetail = MutableLiveData<Villain>()
-    val navigateToVillainDetail: LiveData<Villain>
-        get() = _navigateToVillainDetail
+    private val _navigateToCharacterDetail = MutableLiveData<Character>()
+    val navigateToCharacterDetail: LiveData<Character>
+        get() = _navigateToCharacterDetail
 
     var filters: Filters = Filters()
     private val pagingConfig =
         PagingConfig(pageSize = 20, enablePlaceholders = false, maxSize = 300)
 
-    fun getList(filters: Filters): Flow<PagingData<Villain>> {
+    fun getList(filters: Filters): Flow<PagingData<Character>> {
         return Pager(pagingConfig) {
-            repository.getVillains(filters)
+            repository.getCharacters(filters)
         }.flow.map {
             it.asDomainModel()
         }
@@ -42,17 +42,17 @@ class VillainsViewModel @ViewModelInject constructor
 
     init {
         uiScope.launch {
-            repository.refreshVillains()
+            repository.refreshCharacters()
         }
         filters = Filters()
     }
 
-    fun onVillainClicked(villain: Villain) {
-        _navigateToVillainDetail.value = villain
+    fun onCharacterClicked(character: Character) {
+        _navigateToCharacterDetail.value = character
     }
 
-    fun onVillainDetailNavigated() {
-        _navigateToVillainDetail.value = null
+    fun onCharacterDetailNavigated() {
+        _navigateToCharacterDetail.value = null
     }
 
     override fun onCleared() {

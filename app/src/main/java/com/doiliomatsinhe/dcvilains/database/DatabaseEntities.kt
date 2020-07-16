@@ -2,7 +2,6 @@ package com.doiliomatsinhe.dcvilains.database
 
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations.map
 import androidx.lifecycle.map
 import androidx.paging.PagingData
 import androidx.room.Embedded
@@ -10,8 +9,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.doiliomatsinhe.dcvilains.model.*
 
-@Entity
-data class DatabaseVillain(
+@Entity(tableName = "characters")
+data class DatabaseCharacter(
     @PrimaryKey
     val id: Int,
     val name: String,
@@ -27,10 +26,10 @@ data class DatabaseVillain(
 /**
  * Converts Database results to Domain Objects
  */
-fun List<DatabaseVillain>.asDomainModel(): List<Villain> {
+fun List<DatabaseCharacter>.asDomainModel(): List<Character> {
 
     return map {
-        Villain(
+        Character(
             id = it.id,
             name = it.name,
             slug = it.slug,
@@ -47,10 +46,10 @@ fun List<DatabaseVillain>.asDomainModel(): List<Villain> {
 /**
  * Converts Database results to Domain Objects
  */
-fun LiveData<DatabaseVillain>.asDomainModel(): LiveData<Villain> {
+fun LiveData<DatabaseCharacter>.asDomainModel(): LiveData<Character> {
 
     return map {
-        Villain(
+        Character(
             id = it.id,
             name = it.name,
             slug = it.slug,
@@ -64,10 +63,10 @@ fun LiveData<DatabaseVillain>.asDomainModel(): LiveData<Villain> {
     }
 }
 
-fun PagingData<DatabaseVillain>.asDomainModel(): PagingData<Villain> {
+fun PagingData<DatabaseCharacter>.asDomainModel(): PagingData<Character> {
 
     return map {
-        Villain(
+        Character(
             id = it.id,
             name = it.name,
             slug = it.slug,

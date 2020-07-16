@@ -1,29 +1,29 @@
-package com.doiliomatsinhe.dcvilains.ui.villaindetail
+package com.doiliomatsinhe.dcvilains.ui.characterdetail
 
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
-import com.doiliomatsinhe.dcvilains.model.Villain
-import com.doiliomatsinhe.dcvilains.repository.VillainRepository
+import com.doiliomatsinhe.dcvilains.model.Character
+import com.doiliomatsinhe.dcvilains.repository.CharacterRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class VillainDetailViewModel(
-    private val repository: VillainRepository,
-    private val villainId: Int
+class CharacterDetailViewModel(
+    private val repository: CharacterRepository,
+    private val characterId: Int
 ) : ViewModel() {
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val villain = MediatorLiveData<Villain>()
+    private val character = MediatorLiveData<Character>()
 
-    fun getVillain() = villain
+    fun getVillain() = character
 
     init {
         uiScope.launch {
-            villain.addSource(repository.getVillainById(villainId), villain::setValue)
+            character.addSource(repository.getCharacterById(characterId), character::setValue)
         }
 
     }

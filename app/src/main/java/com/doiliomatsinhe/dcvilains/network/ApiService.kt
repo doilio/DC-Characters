@@ -1,6 +1,6 @@
 package com.doiliomatsinhe.dcvilains.network
 
-import com.doiliomatsinhe.dcvilains.model.Villain
+import com.doiliomatsinhe.dcvilains.model.Character
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -8,9 +8,9 @@ interface ApiService {
 
     //@GET("all")
     @GET("all.json")
-    suspend fun getVillains(): List<NetworkVillain>
+    suspend fun getCharacters(): List<NetworkCharacter>
 
     @GET("id/{id}")
-    suspend fun getVillain(@Path("id") id: Int): Villain?
+    suspend fun getCharacter(@Path("id") id: Int): Character?
 
 }
