@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.doiliomatsinhe.dcvilains"
+        applicationId "com.doiliomatsinhe.dccharacters"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
@@ -61,8 +61,8 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.3.0-alpha01'
     kapt 'androidx.room:room-compiler:2.3.0-alpha01'
     implementation 'androidx.room:room-ktx:2.3.0-alpha01'
-    def paging_version = "3.0.0-alpha02"
 
+    // Paging
     implementation "androidx.paging:paging-runtime:$paging_version"
 
     // Retrofit & Gson Converter

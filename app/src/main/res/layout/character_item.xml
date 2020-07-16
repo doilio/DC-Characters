@@ -7,11 +7,11 @@
 
         <variable
             name="character"
-            type="com.doiliomatsinhe.dcvilains.model.Character" />
+            type="com.doiliomatsinhe.dccharacters.model.Character" />
 
         <variable
             name="clickListener"
-            type="com.doiliomatsinhe.dcvilains.adapter.CharacterClickListener" />
+            type="com.doiliomatsinhe.dccharacters.adapter.CharacterClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
