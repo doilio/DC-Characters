@@ -3,4 +3,14 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!--Powerstats colors-->
+    <color name="colorIntelligence">#81b29a</color>
+    <color name="colorCombat">#e07a5f</color>
+    <color name="colorDurability">#3d405b</color>
+    <color name="colorPower">#f2cc8f</color>
+    <color name="colorSpeed">#7a6f9b</color>
+    <color name="colorStrength">#815e5b</color>
+
+
 </resources>

@@ -21,12 +21,12 @@ data class Work(
 )
 
 data class Powerstats(
-    val intelligence: Int,
-    val strength: Int,
-    val speed: Int,
-    val durability: Int,
-    val power: Int,
-    val combat: Int
+    val intelligence: Int = 0,
+    val strength: Int = 0,
+    val speed: Int = 0,
+    val durability: Int = 0,
+    val power: Int = 0,
+    val combat: Int = 0
 )
 
 data class Images(

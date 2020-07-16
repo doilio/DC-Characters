@@ -16,55 +16,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/cover_image"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:contentDescription="@string/dc_cover_image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/dc_landscape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_character"
+                android:layout_width="0dp"
+                android:layout_height="190dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="50dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView_power_stats"
+                app:layout_constraintDimensionRatio="w,2:3"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/profile_character"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/dc_character_image"
+                    app:srcCompat="@drawable/darkseid" />
+            </androidx.cardview.widget.CardView>
+
             <!--CardView Character-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_power_stats"
                 android:layout_width="0dp"
-                android:layout_height="380dp"
+                android:layout_height="200dp"
                 app:cardElevation="2dp"
                 app:cardPreventCornerOverlap="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/cover_image">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/cover_image"
-                        android:layout_width="0dp"
-                        android:layout_height="250dp"
-                        android:contentDescription="@string/dc_cover_image"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/dc_landscape"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_character"
-                        android:layout_width="0dp"
-                        android:layout_height="190dp"
-                        android:layout_marginStart="16dp"
-                        app:cardBackgroundColor="@android:color/transparent"
-                        app:cardCornerRadius="15dp"
-                        app:cardElevation="16dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/cover_image"
-                        app:layout_constraintDimensionRatio="w,2:3"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cover_image">
-
-                        <ImageView
-                            android:id="@+id/profile_character"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:contentDescription="@string/dc_character_image"
-                            app:srcCompat="@drawable/darkseid" />
-                    </androidx.cardview.widget.CardView>
-
 
                     <TextView
                         android:id="@+id/title_power_stats"
@@ -78,17 +76,29 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Title"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/card_character"
-                        app:layout_constraintTop_toBottomOf="@+id/cover_image" />
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/coming_soon"
-                        app:layout_constraintEnd_toEndOf="@+id/title_power_stats"
-                        app:layout_constraintStart_toStartOf="@+id/title_power_stats"
-                        app:layout_constraintTop_toBottomOf="@+id/title_power_stats" />
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="141dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/powerstats_view"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="8dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/guideline"
+                        app:layout_constraintTop_toBottomOf="@+id/title_power_stats"
+                        app:spanCount="3"
+                        tools:itemCount="6"
+                        tools:listitem="@layout/power_stat_item" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>

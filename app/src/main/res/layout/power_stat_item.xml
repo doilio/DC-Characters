@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.ramijemli.percentagechartview.PercentageChartView
+            android:id="@+id/powerstat_value"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:pcv_animDuration="2000"
+            app:pcv_animInterpolator="anticipate_overshoot"
+            app:pcv_drawBackgroundBar="false"
+            app:pcv_mode="ring"
+            app:pcv_orientation="clockwise"
+            app:pcv_progress="0"
+            app:pcv_progressBarThickness="4dp"
+            app:pcv_progressColor="@color/colorPrimary"
+            app:pcv_startAngle="90"
+            app:pcv_textColor="@android:color/black"
+            app:pcv_textSize="12sp" />
+
+        <TextView
+            android:id="@+id/powerstat_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintEnd_toEndOf="@+id/powerstat_value"
+            app:layout_constraintStart_toStartOf="@+id/powerstat_value"
+            app:layout_constraintTop_toBottomOf="@+id/powerstat_value"
+            tools:text="Intelligence" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

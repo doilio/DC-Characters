@@ -22,6 +22,12 @@
     <string name="retry">Retry</string>
     <string name="no_results_found_nclear_filters">No results found \nClear filters?</string>
     <string name="clear">Clear</string>
+    <string name="strength">Strength</string>
+    <string name="speed">Speed</string>
+    <string name="power">Power</string>
+    <string name="durability">Durability</string>
+    <string name="combat">Combat</string>
+    <string name="intelligence">Intelligence</string>
 
     <!--String Arrays-->
 
