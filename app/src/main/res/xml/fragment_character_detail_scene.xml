@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView_power_stats"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintDimensionRatio="w,2:3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/card_character" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView_power_stats"
+            android:layout_marginBottom="50dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintDimensionRatio="w,2:3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/card_character" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        app:motionInterpolator="linear"
+        app:autoTransition="animateToEnd"
+        app:duration="400">
+        <KeyFrameSet>
+            <KeyAttribute
+                app:motionTarget="@+id/card_character"
+                app:framePosition="0"
+                app:cardElevation="0dp"
+                android:alpha="0"/>
+            <KeyAttribute
+                app:motionTarget="@+id/card_character"
+                app:framePosition="100"
+                app:cardElevation="16dp"
+                android:alpha="1"/>
+        </KeyFrameSet>
+
+    </Transition>
+</MotionScene>
