@@ -33,7 +33,7 @@
                 android:id="@+id/card_character"
                 android:layout_width="0dp"
                 android:layout_height="190dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="12dp"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="16dp"

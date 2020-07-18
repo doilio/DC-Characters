@@ -8,7 +8,7 @@
             android:layout_height="190dp"
             app:layout_constraintBottom_toBottomOf="@+id/cardView_power_stats"
             android:layout_marginBottom="0dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             app:layout_constraintDimensionRatio="w,2:3"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/card_character" />
@@ -20,7 +20,7 @@
             android:layout_height="190dp"
             app:layout_constraintBottom_toBottomOf="@+id/cardView_power_stats"
             android:layout_marginBottom="50dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             app:layout_constraintDimensionRatio="w,2:3"
             app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/card_character" />
