@@ -12,9 +12,10 @@
         android:layout_height="match_parent"
         tools:context=".ui.characterdetail.CharacterDetailFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layoutDescription="@xml/fragment_character_detail_scene">
 
             <ImageView
                 android:id="@+id/cover_image"
@@ -33,7 +34,6 @@
                 android:layout_width="0dp"
                 android:layout_height="190dp"
                 android:layout_marginStart="12dp"
-                android:layout_marginBottom="50dp"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="16dp"
@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/dc_character_image"
-                    app:srcCompat="@drawable/darkseid" />
+                    android:src="@drawable/placeholder" />
             </androidx.cardview.widget.CardView>
 
             <!--CardView Character-->
@@ -275,7 +275,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
     </ScrollView>
 

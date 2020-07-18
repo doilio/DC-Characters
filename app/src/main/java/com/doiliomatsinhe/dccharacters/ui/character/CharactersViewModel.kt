@@ -30,7 +30,7 @@ class CharactersViewModel @ViewModelInject constructor
 
     var filters: Filters = Filters()
     private val pagingConfig =
-        PagingConfig(pageSize = 20, enablePlaceholders = false, maxSize = 300)
+        PagingConfig(pageSize = 55, enablePlaceholders = false, maxSize = 300)
 
     fun getList(filters: Filters): Flow<PagingData<Character>> {
         return Pager(pagingConfig) {
