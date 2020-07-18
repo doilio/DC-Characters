@@ -1,7 +1,8 @@
 # DC-Characters 🦸‍♂️
 Application that displays a list of DC Characters using Modern Android Application Development tools and API's.
-The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villains-api/) and parses the JSON response to display the results
+The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villains-api/) and parses the JSON response to display the results.
 
+[Video Demonstration](https://youtu.be/6rpBNI2BEf0)
 
 
 ![1](https://user-images.githubusercontent.com/38020305/87644247-2d51d100-c74c-11ea-837a-c57f3e0eb62e.png)
