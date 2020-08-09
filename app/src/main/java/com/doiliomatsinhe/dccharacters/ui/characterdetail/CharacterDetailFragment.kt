@@ -10,13 +10,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.doiliomatsinhe.dccharacters.R
 import com.doiliomatsinhe.dccharacters.adapter.PowerStatAdapter
 import com.doiliomatsinhe.dccharacters.databinding.FragmentCharacterDetailBinding
 import com.doiliomatsinhe.dccharacters.model.Character
-import com.doiliomatsinhe.dccharacters.model.Powerstats
 import com.doiliomatsinhe.dccharacters.repository.CharacterRepository
 import com.doiliomatsinhe.dccharacters.utils.ColorUtils
 import dagger.hilt.android.AndroidEntryPoint
