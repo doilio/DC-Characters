@@ -18,6 +18,7 @@ The App Makes a request to an [API](https://rosariopfernandes.github.io/dc-villa
   * [Android KTX](https://developer.android.com/kotlin/ktx)
   * [Databinding](https://developer.android.com/jetpack/androidx/releases/databinding)
   * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+  * [MotionLayout](https://developer.android.com/jetpack/androidx/releases/constraintlayout)
   * [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation)
   * [Paging](https://developer.android.com/jetpack/androidx/releases/paging)
   * [Palette](https://developer.android.com/jetpack/androidx/releases/palette)
