@@ -30,7 +30,7 @@
     <string name="intelligence">Intelligence</string>
     <string name="hey_do_you_know_">Hey, do you know </string>
     <string name="from_message">from DC-Universe? Checkout his stats on</string>
-    <string name="playstore_app_link">https://play.google.com/store/apps/details?id=com.android.dccharacters</string>
+    <string name="playstore_app_link">https://play.google.com/store/apps/details?id=com.dccharacters.android</string>
     <string name="share_using">Share using</string>
     <string name="sharing_failed">Sharing failed, Try again later!</string>
 
