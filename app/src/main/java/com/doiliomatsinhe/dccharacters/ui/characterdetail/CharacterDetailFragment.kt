@@ -1,12 +1,12 @@
 package com.doiliomatsinhe.dccharacters.ui.characterdetail
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -196,6 +196,39 @@ class CharacterDetailFragment : Fragment() {
             titlePowerStats.setTextColor(arguments.cardColor)
             titleRelatives.setTextColor(arguments.cardColor)
 
+        }
+
+        setHasOptionsMenu(true)
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.details_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.ic_share) {
+            shareCharacter()
+        }
+        return true
+    }
+
+    private fun shareCharacter() {
+        val intentText =
+            getString(R.string.hey_do_you_know_) +
+                    " " + arguments.villainName +
+                    " " + getString(R.string.from_message) +
+                    " " + getString(R.string.playstore_app_link)
+
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, intentText)
+        }
+        if (intent.resolveActivity(requireActivity().packageManager) != null) {
+            startActivity(Intent.createChooser(intent, getString(R.string.share_using)))
+        } else {
+            Toast.makeText(activity, getString(R.string.sharing_failed), Toast.LENGTH_SHORT).show()
         }
 
     }
