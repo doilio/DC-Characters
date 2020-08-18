@@ -18,9 +18,12 @@ import com.doiliomatsinhe.dccharacters.adapter.CharacterClickListener
 import com.doiliomatsinhe.dccharacters.databinding.FragmentCharactersBinding
 import com.doiliomatsinhe.dccharacters.model.Filters
 import com.doiliomatsinhe.dccharacters.ui.filter.FilterFragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class CharactersFragment : Fragment(),
@@ -29,6 +32,7 @@ class CharactersFragment : Fragment(),
     private lateinit var binding: FragmentCharactersBinding
     private val charactersViewModel: CharactersViewModel by viewModels()
     private lateinit var characterAdapter: CharacterAdapter
+    private lateinit var interstitialAd: InterstitialAd
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +55,13 @@ class CharactersFragment : Fragment(),
 
         charactersViewModel.navigateToCharacterDetail.observe(viewLifecycleOwner, Observer {
             it?.let {
+                // If Ad is ready to be displayed, then display it
+                if (interstitialAd.isLoaded) {
+                    interstitialAd.show()
+                } else {
+                    Timber.d("Ad wasn't loaded yet!")
+                }
+
                 findNavController().navigate(
                     CharactersFragmentDirections.actionVillainsFragmentToVillainDetailFragment(
                         it.id,
@@ -119,6 +130,12 @@ class CharactersFragment : Fragment(),
             val filters = Filters()
             onFilter(filters)
         }
+
+        // Initialize Ad
+        interstitialAd = InterstitialAd(requireContext())
+        interstitialAd.adUnitId = "ca-app-pub-3005109827350902/5784846047"
+        interstitialAd.loadAd(AdRequest.Builder().build())
+
 
     }
 

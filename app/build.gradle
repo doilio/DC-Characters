@@ -13,6 +13,7 @@ android {
         applicationId "com.doiliomatsinhe.dccharacters"
         minSdkVersion 19
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
 
@@ -100,5 +101,10 @@ dependencies {
     // Percentage ChartView
     implementation "com.ramijemli.percentagechartview:percentagechartview:$chartview_version"
 
+    // Admob
+    implementation 'com.google.android.gms:play-services-ads:19.3.0'
+
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
 
 }
