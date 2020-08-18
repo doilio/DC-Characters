@@ -4,6 +4,7 @@ package com.doiliomatsinhe.dccharacters.database
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import androidx.paging.PagingData
+import androidx.paging.map
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -64,6 +65,7 @@ fun LiveData<DatabaseCharacter>.asDomainModel(): LiveData<Character> {
 }
 
 fun PagingData<DatabaseCharacter>.asDomainModel(): PagingData<Character> {
+
 
     return map {
         Character(
